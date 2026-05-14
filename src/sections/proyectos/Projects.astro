@@ -1,58 +1,119 @@
---- 
+---
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
 const projects = await getCollection("projects");
 
---- 
+---
 
-<section>
-  <article>
-    <ul>
+<section class="projects-section">
+  <div class="projects-inner">
+    <ul class="projects-grid">
         {projects.map((p: any) => (
           <li>
-            <a href={`/proyectos/${p.slug}`}>
+            <a href={`/proyectos/${p.slug}`} class="project-card">
               <Image
                 src={p.data.portada}
                 alt={p.data.title}
                 width={400}
               />
-              <h2>{p.data.title}</h2>
-              <p>{p.data.description}</p>
+              <div class="project-info">
+                <h2>{p.data.title}</h2>
+                <p>{p.data.description}</p>
+                <span class="project-meta">{p.data.type} — {p.data.location} — {p.data.year}</span>
+              </div>
             </a>
           </li>
         ))}
     </ul>
-  </article>
+  </div>
 </section>
 
 <style>
-  section { 
-    width: 100%;
+  .projects-section {
+    background-color: var(--color-white);
+  }
+
+  .projects-inner {
+    max-width: var(--max-width);
+    margin: auto;
     padding: 100px 40px;
   }
 
-  article { 
-    width: 100%;
-    max-width: var(--max-width);
-    margin: auto;
-  }
-
-  ul { 
+  .projects-grid {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+    list-style: none;
   }
 
-  ul li a { 
-    display: grid;
-    gap: 10px;
+  .project-card {
+    display: block;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: var(--transition);
+    text-decoration: none;
+    color: inherit;
+    background: var(--color-white);
   }
 
-  ul img { 
+  .project-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-6px);
+    border-color: var(--color-accent-light);
+  }
+
+  .project-card img {
     width: 100%;
+    height: 240px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
 
-    height: 400px;
+  .project-card:hover img {
+    transform: scale(1.04);
+  }
+
+  .project-info {
+    padding: 20px 24px 24px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .project-info h2 {
+    font-family: 'Playfair Display Variable', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .project-info p {
+    font-size: 0.92rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 4px;
+  }
+
+  .project-meta {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 768px) {
+    .projects-inner {
+      padding: 60px 20px;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

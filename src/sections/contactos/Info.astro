@@ -4,120 +4,156 @@ import cellphone from '../../assets/cellphone.svg';
 import location from '../../assets/location.svg';
 import mail from '../../assets/mail.svg';
 import FormContact from '../../components/FormContact.astro';
---- 
+---
 
-<section>
-  <article>
-    <div class="text">
-      <h3>Información</h3>
-
+<section class="contact-section">
+  <div class="contact-inner">
+    <div class="contact-text">
+      <span class="overline">Información</span>
+      <h3>Estamos aquí para ti</h3>
       <ul>
           <li>
-            <span>
-              <img src={location.src} alt="location">
+            <span class="icon-wrapper">
+              <img src={location.src} alt="ubicación">
             </span>
             <div>
-              <h6>Visitanos</h6>
-              <p>Calle de la Arquitectura 123
-28001 Madrid, España</p>
-            </div>
-          </li>
-      
-          <li>
-            <span> 
-              <img src={mail.src} alt="mail icon">
-            </span>
-            <div>
-              <h6>Escríbanos</h6>
-              <p>info@archistudio.com
-proyectos@archistudio.com</p>
+              <h6>Visítanos</h6>
+              <p>Calle de la Arquitectura 123, 28001 Madrid, España</p>
             </div>
           </li>
 
           <li>
-            <span> 
-              <img src={cellphone.src} alt="mail icon">
+            <span class="icon-wrapper">
+              <img src={mail.src} alt="correo">
+            </span>
+            <div>
+              <h6>Escríbenos</h6>
+              <p>info@archistudio.com<br>proyectos@archistudio.com</p>
+            </div>
+          </li>
+
+          <li>
+            <span class="icon-wrapper">
+              <img src={cellphone.src} alt="teléfono">
             </span>
             <div>
               <h6>Llámanos</h6>
-              <p>+34 912 345 678
-Lun - Vie, 9:00 - 18:00</p>
+              <p>+34 912 345 678<br>Lun - Vie, 9:00 - 18:00</p>
             </div>
           </li>
-
       </ul>
-
       <GoogleMap />
     </div>
 
-    <div class="form">
+    <div class="contact-form">
       <FormContact />
     </div>
-  </article>
+  </div>
 </section>
 
 <style>
-  section { 
-    width: 100%;
-    padding: 100px 40px;
+  .contact-section {
+    background-color: var(--color-bg-light);
   }
 
-  article { 
-    width: 100%;
+  .contact-inner {
     max-width: var(--max-width);
     margin: auto;
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
+    padding: 100px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
   }
 
-  .text { 
-    width: 50%;
-    height: 100%;
+  .overline {
+    display: inline-block;
+    font-family: 'Inter Variable', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    margin-bottom: 12px;
   }
 
-  .form { 
-    width: 50%;
+  h3 {
+    font-family: 'Playfair Display Variable', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 32px;
   }
 
-  h3 { 
-    font-size: 2.25rem;
-    margin-bottom: 20px;
-  }
-
-  span { 
-    padding: 10px;
-    background-color: #eeeeee;
-    display: flex;
-  }
-
-  span img { 
-    width: 30px;
-  }
-
-  ul { 
+  ul {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
-    margin-bottom: 30px;
+    gap: 24px;
+    margin-bottom: 32px;
+    list-style: none;
   }
 
-   ul li {
+  ul li {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 15px;
-   }
+    gap: 16px;
+    width: 100%;
+  }
 
-   h6 {
-    font-size: 1.25rem;
-   } 
+  .icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    height: 48px;
+    background: var(--color-white);
+    border-radius: 10px;
+    box-shadow: var(--shadow-card);
+    padding: 10px;
+    flex-shrink: 0;
+  }
 
-   li p { 
-     font-size: 1.10rem;
-    color: #717171;
-   }
+  .icon-wrapper img {
+    width: 22px;
+    height: 22px;
+  }
 
+  h6 {
+    font-family: 'Playfair Display Variable', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 4px;
+  }
 
+  li p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--color-text-muted);
+  }
+
+  .contact-form {
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    padding: 36px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  @media (max-width: 768px) {
+    .contact-inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 60px 20px;
+    }
+
+    .contact-form {
+      padding: 24px;
+    }
+
+    h3 {
+      font-size: 1.6rem;
+    }
+  }
 </style>

@@ -1,6 +1,6 @@
 ---
 
---- 
+---
 
 <footer>
   <div class="container">
@@ -12,108 +12,188 @@
     <div class="div2">
       <h4>Enlaces</h4>
       <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Sobre Nosotros</a></li>
-        <li><a href="#">Proyectos</a></li>
-        <li><a href="#">Servicios</a></li>
-        <li><a href="#">Contacto</a></li>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/sobre-nosotros">Sobre Nosotros</a></li>
+        <li><a href="/proyectos">Proyectos</a></li>
+        <li><a href="/servicios">Servicios</a></li>
+        <li><a href="/contacto">Contacto</a></li>
       </ul>
     </div>
 
     <div class="div3">
       <h4>Servicios</h4>
       <ul>
-        <li>Diseño Arquitectónico</li>
-        <li>Urbanismo</li>
-        <li>Interiorismo</li>
-        <li>Consultoría Técnica</li>
+        <li><a href="#">Diseño Arquitectónico</a></li>
+        <li><a href="#">Urbanismo</a></li>
+        <li><a href="#">Interiorismo</a></li>
+        <li><a href="#">Consultoría Técnica</a></li>
       </ul>
     </div>
 
     <div class="div4">
       <h4>Contacto</h4>
       <ul>
-        <div>
-          <li>Dirección:</li>
-          <p>Calle de la Arquitectura 123,
-28001 Madrid, España</p>
-        </div>
-
-        <div>
-          <li>Email:</li>
-          <p>info@archistudio.com</p>
-        </div>
-
-        <div>
-          <li>Teléfono:</li>
-          <p>+12345678</p>
-        </div>
+        <li>
+          <span class="icon">📍</span>
+          <div>
+            <strong>Dirección</strong>
+            <p>Calle de la Arquitectura 123, 28001 Madrid, España</p>
+          </div>
+        </li>
+        <li>
+          <span class="icon">✉️</span>
+          <div>
+            <strong>Email</strong>
+            <p><a href="mailto:info@archistudio.com">info@archistudio.com</a></p>
+          </div>
+        </li>
+        <li>
+          <span class="icon">📞</span>
+          <div>
+            <strong>Teléfono</strong>
+            <p><a href="tel:+12345678">+12345678</a></p>
+          </div>
+        </li>
       </ul>
     </div>
   </div>
-   <div class="copyright">
-      <p>© 2026 ArchiStudio. Todos los derechos reservados.</p>
-      <div>
-        <a href="#">Politica de privacidad</a>
-        <a href="#">Términos de uso</a>
-      </div>
+
+  <div class="copyright">
+    <p>© 2026 ArchiStudio. Todos los derechos reservados.</p>
+    <div>
+      <a href="#">Política de privacidad</a>
+      <a href="#">Términos de uso</a>
     </div>
+  </div>
 </footer>
 
 <style>
-  footer { 
+  footer {
     width: 100%;
-    background-color: #222222;
-    padding: 80px 40px 40px 40px;
+    background-color: var(--color-primary);
+    padding: 80px 40px 40px;
+    color: var(--color-text);
   }
 
-  .container { 
+  .container {
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
     max-width: var(--max-width);
     margin: auto;
+    gap: 40px;
   }
 
-  h3, h4 { 
-    color: white;
-    font-size: 1.4rem;
+  h3 {
+    font-family: 'Playfair Display Variable', serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.04em;
     margin-bottom: 20px;
   }
 
-  ul { 
+  h4 {
+    font-family: 'Playfair Display Variable', serif;
+    font-size: 1.1rem;
+    margin-bottom: 24px;
+    letter-spacing: 0.02em;
+  }
+
+  ul {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
 
-  a, li { 
-    color: #8b929e;
+  .div1 p {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    font-size: 0.95rem;
   }
 
-  .div1, .div2, .div3, .div4 { 
-    width: 25%;
+  .div2 a,
+  .div3 a {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    transition: var(--transition);
   }
 
-  .div1 p { 
-    color: #8b929e;
+  .div2 a:hover,
+  .div3 a:hover {
+    color: var(--color-accent);
+    padding-left: 6px;
   }
 
-  .div4 li { 
-    color: white
+  .div4 ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 20px;
   }
 
-  .div4 p { 
-    color: #8b929e;
+  .div4 ul li:last-child {
+    margin-bottom: 0;
   }
 
-  .copyright { 
+  .div4 strong {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent-light);
+    margin-bottom: 4px;
+  }
+
+  .div4 p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+
+  .div4 a {
+    color: var(--color-text-muted);
+    transition: var(--transition);
+  }
+
+  .div4 a:hover {
+    color: var(--color-accent);
+  }
+
+  .copyright {
     display: flex;
     justify-content: space-between;
-    color: #8b929e;
+    align-items: center;
+    color: var(--color-text-muted);
     font-size: 0.8rem;
     max-width: var(--max-width);
     margin: auto;
-    
     margin-top: 50px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .copyright a {
+    color: var(--color-text-muted);
+    margin-left: 20px;
+    transition: var(--transition);
+  }
+
+  .copyright a:hover {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    footer {
+      padding: 60px 20px 30px;
+    }
+
+    .copyright {
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+    }
   }
 </style>

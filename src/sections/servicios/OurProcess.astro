@@ -1,117 +1,154 @@
 ---
 
---- 
+---
 
-<section>
-  <article>
-    <div class="text">
-      <h3>Nuestro Proceso</h3>
+<section class="process-section">
+  <div class="process-inner">
+    <div class="process-header">
+      <span class="overline">Cómo trabajamos</span>
+      <h3>Nuestro proceso</h3>
       <p>Una metodología rigurosa y colaborativa que garantiza resultados excepcionales en cada etapa.</p>
-    </div> 
-    <ul class="proccess">
-        <li>
-          <span> 01
-          </span>
-          <div>
-            <h6>Analisis</h6>
-            <p>Estudio del sitio, necesidades y viabilidad.</p>
-          </div>
-        </li>
-    
-        <li>
-          <span> 02
-          </span>
-          <div>
-            <h6>Concepto</h6>
-            <p>Desarrollo de ideas y propuestas de diseño.</p>
-          </div>
-        </li>
-    
-        <li>
-          <span> 03
-          </span>
-          <div>
-            <h6>Desarrollo</h6>
-            <p>Planos técnicos y especificaciones detalladas.</p>
-          </div>
-        </li>
-    
-        <li>
-          <span> 04
-          </span>
-          <div>
-            <h6>Ejecución</h6>
-            <p>Supervisión de obra y control de calidad.</p>
-          </div>
-        </li>
-    
-      </ul>
+    </div>
+    <ul class="process-grid">
+      <li class="process-card">
+        <span class="step">01</span>
+        <div class="process-content">
+          <h6>Análisis</h6>
+          <p>Estudio del sitio, necesidades del cliente y evaluación de viabilidad técnica y presupuestaria.</p>
+        </div>
+      </li>
 
-  </article>
+      <li class="process-card">
+        <span class="step">02</span>
+        <div class="process-content">
+          <h6>Concepto</h6>
+          <p>Desarrollo de ideas creativas, propuestas de diseño y definición de la dirección estética del proyecto.</p>
+        </div>
+      </li>
+
+      <li class="process-card">
+        <span class="step">03</span>
+        <div class="process-content">
+          <h6>Desarrollo</h6>
+          <p>Planos técnicos detallados, selección de materiales y coordinación interdisciplinaria.</p>
+        </div>
+      </li>
+
+      <li class="process-card">
+        <span class="step">04</span>
+        <div class="process-content">
+          <h6>Ejecución</h6>
+          <p>Supervisión de obra, control de calidad y aseguramiento del cumplimiento de plazos y estándares.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
 </section>
 
 <style>
-  section { 
-    padding: 120px 40px;
-    background-color: #222222;
-    color: white;
+  .process-section {
+    background-color: var(--color-primary);
+    color: var(--color-text);
   }
 
-  article { 
+  .process-inner {
     max-width: var(--max-width);
     margin: auto;
+    padding: 100px 40px;
   }
 
-  .text { 
-    width: 100%;
-    display: grid;
-    place-items: center;
-    gap: 10px;
+  .process-header {
+    text-align: center;
+    margin-bottom: 56px;
   }
 
-  h3 { 
-    font-size: 2.25rem;
+  .overline {
+    display: inline-block;
+    font-family: 'Inter Variable', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    margin-bottom: 12px;
   }
 
-  .text p { 
-    font-size: 1.25rem;
-    color: #99a1af;
-  }
-
-  .proccess { 
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  }
-
-  span { 
-    font-size: 3rem;
+  h3 {
+    font-family: 'Playfair Display Variable', serif;
+    font-size: 2rem;
     font-weight: 700;
-    color: #cfb47c;
+    color: var(--color-text);
+    margin-bottom: 16px;
   }
 
-  h6 { 
-    font-size: 1.25rem;
+  .process-header p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 550px;
+    margin: 0 auto;
   }
 
-  ul { 
-    margin-top: 40px;
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    list-style: none;
   }
 
-  ul li { 
+  .step {
+    font-family: 'Playfair Display Variable', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .process-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: 28px 20px;
+    border-radius: var(--border-radius);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: var(--transition);
   }
 
-  ul li div { 
-    display: grid;
-    gap: 10px;
-
+  .process-card:hover {
+    background: rgba(201, 169, 110, 0.1);
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
   }
 
-  ul li div p { 
-    color: #99a1af;
+  .process-content h6 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+
+  .process-content p {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  @media (max-width: 768px) {
+    .process-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .process-inner {
+      padding: 60px 20px;
+    }
+
+    h3 {
+      font-size: 1.6rem;
+    }
   }
 </style>

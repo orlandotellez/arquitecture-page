@@ -1,5 +1,5 @@
 ---
-interface Props { 
+interface Props {
   img: string
   name: string
   rol: string
@@ -9,10 +9,11 @@ interface Props {
 const { img, name, rol, description }: Props = Astro.props
 ---
 
-
-<div class="container">
-  <img src={img} alt="">
-  <div>
+<div class="card">
+  <div class="img-wrapper">
+    <img src={img} alt={name} />
+  </div>
+  <div class="content">
     <h4>{name}</h4>
     <h5>{rol}</h5>
     <p>{description}</p>
@@ -20,33 +21,65 @@ const { img, name, rol, description }: Props = Astro.props
 </div>
 
 <style>
-  .container { 
-    width: 100%;
+  .card {
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.04);
   }
 
-  img { 
+  .card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-6px);
+  }
+
+  .img-wrapper {
+    overflow: hidden;
+  }
+
+  .img-wrapper img {
     width: 100%;
-    height: 400px;
+    height: 340px;
     object-fit: cover;
+    transition: transform 0.4s ease;
   }
 
-  .container div { 
+  .card:hover .img-wrapper img {
+    transform: scale(1.04);
+  }
+
+  .content {
+    padding: 24px;
     display: grid;
-    gap: 5px;
-    margin-top: 20px;
+    gap: 6px;
   }
 
-  h4 { 
-    font-size: 1.5rem;
+  h4 {
+    font-family: 'Playfair Display Variable', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-primary);
   }
 
-  h5 { 
-    color: #cfb47c;
-    font-size: 1.25rem;
+  h5 {
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-style: italic;
   }
-  
-  p { 
+
+  p {
     margin-top: 10px;
-    font-size: 1.18rem;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .content {
+      padding: 18px;
+    }
   }
 </style>

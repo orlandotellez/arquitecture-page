@@ -2,52 +2,84 @@
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 // Supports weights 100-900
+import '@fontsource-variable/playfair-display';
 import '@fontsource-variable/inter';
---- 
+---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>ArchiStudio — Arquitectura & Diseño</title>
 	</head>
   <body>
     <Header />
     <main>
-		  <slot />
+	  <slot />
     </main>
     <Footer />
-	</body>
+  </body>
 </html>
 
 <style is:global>
-  :root { 
+  :root {
     --max-width: 1200px;
+    --color-primary: #1a1a2e;
+    --color-secondary: #16213e;
+    --color-accent: #c9a96e;
+    --color-accent-light: #e8c67a;
+    --color-text: #f5f0eb;
+    --color-text-dark: #2c2c2c;
+    --color-text-muted: #8a8a8a;
+    --color-bg-light: #f8f6f2;
+    --color-bg-section: #ededed;
+    --color-bg-dark: #1a1a2e;
+    --color-white: #ffffff;
+    --border-radius: 12px;
+    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.15);
+    --transition: all 0.3s ease;
   }
 
-  * { 
+  * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
   }
 
-  body { 
+  body {
     font-family: 'Inter Variable', sans-serif;
+    color: var(--color-text-dark);
+    background-color: var(--color-white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  li { 
+  li {
     list-style: none;
   }
 
-  a { 
+  a {
     text-decoration: none;
-    color: black;
+    color: inherit;
+    transition: var(--transition);
   }
 
   main {
-    margin-top: 78px;
+    margin-top: 80px;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    main {
+      margin-top: 60px;
+    }
   }
 </style>

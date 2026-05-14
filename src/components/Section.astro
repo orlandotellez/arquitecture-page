@@ -1,19 +1,27 @@
 ---
-
---- 
+---
 
 <section>
-  <slot />
+  <div class="section-inner">
+    <slot />
+  </div>
 </section>
 
 <style>
-  section { 
-    background-color: #EEEEEE;
+  section {
     width: 100%;
-    color: white;
-    padding: 100px 40px;
-    display: flex;
-    
+    position: relative;
   }
 
+  .section-inner {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 100px 40px;
+  }
+
+  @media (max-width: 768px) {
+    .section-inner {
+      padding: 60px 20px;
+    }
+  }
 </style>

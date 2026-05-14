@@ -1,55 +1,65 @@
 ---
 import Section from '../../components/Section.astro';
---- 
+---
 
 <Section>
-  <article class="article">
- <article>
-    <h5>Servicios</h5>
-    <p>
-
-Ofrecemos soluciones integrales de arquitectura y diseño, adaptadas a las necesidades específicas de cada cliente y proyecto.
-    </p> 
+  <article class="hero-content">
+    <span class="overline">Lo que ofrecemos</span>
+    <h2 class="title">Soluciones integrales de <span class="accent">arquitectura y diseño</span></h2>
+    <p class="subtitle">
+      Ofrecemos soluciones integrales de arquitectura y diseño, adaptadas a las necesidades específicas de cada cliente y proyecto.
+    </p>
   </article>
-
-
-  </article>
-  </Section>
+</Section>
 
 <style>
-
-  .article { 
+  .hero-content {
     width: 100%;
-    max-width: var(--max-width);
+    max-width: 800px;
     margin: auto;
+    text-align: center;
+    padding: 80px 0;
   }
 
-  h5 { 
-    font-size: 4rem;
-    color: #222222;
+  .overline {
+    display: inline-block;
+    font-family: 'Inter Variable', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    margin-bottom: 16px;
   }
 
-  p { 
-    font-size: 1.25rem;
-    color: #717171;
+  .title {
+    font-family: 'Playfair Display Variable', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.15;
+    margin-bottom: 24px;
   }
 
-  article { 
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    justify-content: center;
-    margin-bottom: 50px;
+  .accent {
+    color: var(--color-accent);
   }
 
-  article div { 
-    display: flex;
-    gap: 20px;
+  .subtitle {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
   }
 
-  article div a { 
-    padding: 12px 22px;
-    color: white;
+  @media (max-width: 768px) {
+    .title {
+      font-size: 2.2rem;
+    }
+
+    .hero-content {
+      padding: 60px 0;
+    }
   }
 </style>

@@ -1,28 +1,89 @@
 ---
-interface Props { 
+interface Props {
   img: string
   place: string
   details: string
 }
 
 const {img, place, details}: Props = Astro.props
---- 
+---
 
-<a href="#">
-  <img src={img} alt="">
-  <div>
+<a href="#" class="card">
+  <div class="img-wrapper">
+    <img src={img} alt={place} loading="lazy" />
+  </div>
+  <div class="content">
     <h5>{place}</h5>
     <p>{details}</p>
+    <span class="link">Ver proyecto</span>
   </div>
 </a>
 
 <style>
-  a { 
-    width: 100%;
+  .card {
+    display: block;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: var(--transition);
+    text-decoration: none;
+    color: inherit;
+    background: var(--color-white);
   }
 
-  img { 
-    width: 100%;
+  .card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-6px);
+    border-color: var(--color-accent-light);
   }
 
+  .img-wrapper {
+    overflow: hidden;
+  }
+
+  .img-wrapper img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .card:hover .img-wrapper img {
+    transform: scale(1.05);
+  }
+
+  .content {
+    padding: 24px;
+    display: grid;
+    gap: 6px;
+  }
+
+  h5 {
+    font-family: 'Playfair Display Variable', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .link {
+    display: inline-block;
+    margin-top: 12px;
+    font-family: 'Inter Variable', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    letter-spacing: 0.02em;
+    transition: var(--transition);
+  }
+
+  .card:hover .link {
+    letter-spacing: 0.06em;
+  }
 </style>

@@ -1,54 +1,117 @@
 ---
 import Section from '../../components/Section.astro';
---- 
+---
 
 <Section>
-  <article class="article">
- <article>
-    <h5>Sobre nosotros</h5>
-    <p>
-      Creamos espacios que trascienden lo funcional para convertirse en experiencias emocionales. Arquitectura con alma y propósito. 
-    </p> 
+  <article class="hero-content">
+    <span class="overline">Quiénes somos</span>
+    <h2 class="title">Arquitectura con <span class="accent">alma</span> y propósito</h2>
+    <p class="subtitle">
+      Creamos espacios que trascienden lo funcional para convertirse en experiencias emocionales.
+      Más de una década diseñando proyectos que conectan personas con su entorno.
+    </p>
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-number">15+</span>
+        <span class="stat-label">Años de experiencia</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">200+</span>
+        <span class="stat-label">Proyectos realizados</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">15</span>
+        <span class="stat-label">Países</span>
+      </div>
+    </div>
   </article>
-
-
-  </article>
-  </Section>
+</Section>
 
 <style>
-
-  .article { 
+  .hero-content {
     width: 100%;
-    max-width: var(--max-width);
+    max-width: 800px;
     margin: auto;
+    text-align: center;
+    padding: 80px 0;
   }
 
-  h5 { 
-    font-size: 4rem;
-    color: #222222;
+  .overline {
+    display: inline-block;
+    font-family: 'Inter Variable', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    margin-bottom: 16px;
   }
 
-  p { 
-    font-size: 1.25rem;
-    color: #717171;
+  .title {
+    font-family: 'Playfair Display Variable', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.15;
+    margin-bottom: 24px;
   }
 
-  article { 
-    width: 60%;
+  .accent {
+    color: var(--color-accent);
+  }
+
+  .subtitle {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto 60px;
+  }
+
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    justify-content: center;
-    margin-bottom: 50px;
+    align-items: center;
+    gap: 8px;
   }
 
-  article div { 
-    display: flex;
-    gap: 20px;
+  .stat-number {
+    font-family: 'Playfair Display Variable', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
   }
 
-  article div a { 
-    padding: 12px 22px;
-    color: white;
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 768px) {
+    .title {
+      font-size: 2.2rem;
+    }
+
+    .hero-content {
+      padding: 60px 0;
+    }
+
+    .stats {
+      gap: 24px;
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+    }
   }
 </style>

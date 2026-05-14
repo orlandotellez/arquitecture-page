@@ -1,26 +1,66 @@
 ---
-
 ---
 
-<article>
-  <h3>Nuestra Historia</h3>
-  <p>Fundado en 2010 por Elena Vega, ArchiStudio nació con la visión de crear una arquitectura que respondiera a las necesidades contemporáneas sin perder la conexión con la tradición y el entorno.</p>
-  <p>Lo que comenzó como un pequeño taller de diseño en Madrid ha crecido hasta convertirse en un estudio reconocido internacionalmente, con proyectos que abarcan desde residencias privadas hasta grandes equipamientos públicos.</p>
-  <p>A lo largo de esta década, hemos mantenido intacta nuestra pasión por el detalle y nuestro compromiso con la calidad, entendiendo cada proyecto como una oportunidad única para innovar y mejorar el entorno construido.</p>
+<article class="history">
+  <span class="overline">Nuestra trayectoria</span>
+  <h3>Una década creando el futuro arquitectónico</h3>
+  <div class="content">
+    <p>
+      Fundado en 2010 por Elena Vega, ArchiStudio nació con la visión de crear una arquitectura que respondiera a las necesidades contemporáneas sin perder la conexión con la tradición y el entorno.
+    </p>
+    <p>
+      Lo que comenzó como un pequeño taller de diseño en Madrid ha crecido hasta convertirse en un estudio reconocido internacionalmente, con proyectos que abarcan desde residencias privadas hasta grandes equipamientos públicos.
+    </p>
+    <p>
+      A lo largo de esta década, hemos mantenido intacta nuestra pasión por el detalle y nuestro compromiso con la calidad, entendiendo cada proyecto como una oportunidad única para innovar y mejorar el entorno construido.
+    </p>
+  </div>
 </article>
 
-
 <style>
-  article { 
+  .history {
     width: 100%;
+    padding: 40px 0;
   }
 
-  h3 { 
-    font-size: 2.25rem;   
-    margin-bottom: 20px;
+  .overline {
+    display: inline-block;
+    font-family: 'Inter Variable', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    margin-bottom: 12px;
   }
 
-  p { 
-    margin-bottom: 20px;
+  h3 {
+    font-family: 'Playfair Display Variable', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.2;
+    margin-bottom: 28px;
+  }
+
+  .content p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--color-text-muted);
+    margin-bottom: 18px;
+  }
+
+  .content p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    h3 {
+      font-size: 1.6rem;
+    }
+
+    .content p {
+      font-size: 0.95rem;
+    }
   }
 </style>

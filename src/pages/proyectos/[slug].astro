@@ -18,98 +18,136 @@ const { Content } = await project.render();
 ---
 
 <Layout>
-  <section>
-    <article class="hero" style={`background-image:  linear-gradient(
-                            0deg,
-                            rgba(0, 0, 0, 0.5),
-                            rgba(0, 0, 0, 0.5)
-                            ), url(${project.data.portada.src})`}> 
-      <div>
-        <span>{project.data.type}</span>
-        <h1>{project.data.title}</h1>
-        <p>{project.data.description}</p>
-      </div>
-    </article>
-    
-    <div class="content">
+  <section class="project-hero">
+    <div class="project-hero-inner">
+      <span class="overline">{project.data.type}</span>
+      <h1>{project.data.title}</h1>
+      <p>{project.data.description}</p>
+    </div>
+  </section>
+
+  <section class="project-content">
+    <div class="content-inner">
       <Content />
     </div>
   </section>
 </Layout>
 
-
 <style>
-  .hero {
+  .project-hero {
     width: 100%;
+    min-height: 60dvh;
     background-size: cover;
     background-position: center;
-    color: white;
-    padding: 100px 40px;
+    background-image: linear-gradient(
+      135deg,
+      rgba(26, 26, 46, 0.82),
+      rgba(22, 33, 62, 0.72)
+    ),
+    url(${project.data.portada.src});
+    display: flex;
+    align-items: center;
+    color: var(--color-text);
   }
 
-  .hero div { 
-    width: 100%;
+  .project-hero-inner {
     max-width: var(--max-width);
     margin: auto;
-    display: grid;
-    margin-bottom: 50px;
-    margin-top: 50px;
+    padding: 80px 40px;
   }
 
-  .hero h1 { 
-    font-size: 4rem;
+  .overline {
+    display: inline-block;
+    font-family: 'Inter Variable', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    margin-bottom: 16px;
   }
 
-  .hero span { 
-    font-size: 1.25rem;
-    color: white;
-    background-color: #cfb47c;
-    width: 140px;
-    display: grid;
-    place-items: center;
-    padding: 5px;
-    font-weight: bold;
+  .project-hero-inner h1 {
+    font-family: 'Playfair Display Variable', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 20px;
   }
 
-  .hero p { 
-    font-size: 1.25rem;
+  .project-hero-inner p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 650px;
   }
 
-  .content {
-    width: 100%;
+  .project-content {
+    background: var(--color-white);
+  }
+
+  .content-inner {
     max-width: var(--max-width);
     margin: auto;
-    padding: 100px 0px;
+    padding: 80px 40px;
   }
 
   .content :global(p) {
     margin-bottom: 1.5rem;
-    line-height: 1.6;
-    font-size: 1.1rem;
-    color: #212121;
+    line-height: 1.75;
+    font-size: 1.05rem;
+    color: var(--color-text-muted);
   }
 
   .content :global(h1) {
+    font-family: 'Playfair Display Variable', serif;
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    color: var(--color-primary);
   }
 
   .content :global(h2) {
+    font-family: 'Playfair Display Variable', serif;
     font-size: 2rem;
     margin-bottom: 0.8rem;
+    color: var(--color-primary);
   }
 
   .content :global(h3) {
+    font-family: 'Playfair Display Variable', serif;
     font-size: 1.75rem;
     margin-bottom: 0.7rem;
+    color: var(--color-primary);
   }
 
-  .content :global(ul), .content :global(ol) {
+  .content :global(ul),
+  .content :global(ol) {
     margin-bottom: 1.5rem;
     padding-left: 2rem;
   }
 
   .content :global(li) {
     margin-bottom: 0.5rem;
+    color: var(--color-text-muted);
+  }
+
+  .content :global(img) {
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-card);
+    margin: 1.5rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .project-hero-inner {
+      padding: 60px 20px;
+    }
+
+    .project-hero-inner h1 {
+      font-size: 2.2rem;
+    }
+
+    .content-inner {
+      padding: 60px 20px;
+    }
   }
 </style>

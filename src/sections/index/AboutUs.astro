@@ -1,64 +1,116 @@
 ---
 
---- 
+---
 
-<section>
-  <article>
-    <div class="text">
-      <span>Sobre nosotros</span>
+<section class="about-section">
+  <div class="about-inner">
+    <div class="about-text">
+      <span class="overline">Sobre nosotros</span>
       <h3>Arquitectura que dialoga con su entorno y sus habitantes</h3>
-      <p>En ArchiStudio, creemos que la arquitectura es más que construir edificios; es sobre crear entornos que mejoren la vida de las personas. Nuestro enfoque combina la estética minimalista con la funcionalidad pragmática, siempre respetando el contexto y la sostenibilidad.</p>
-      <a href="#">Conoce nuestra historia -></a>
+      <p>
+        En ArchiStudio, creemos que la arquitectura es más que construir edificios; es sobre crear
+        entornos que mejoren la vida de las personas. Nuestro enfoque combina la estética minimalista
+        con la funcionalidad pragmática, siempre respetando el contexto y la sostenibilidad.
+      </p>
+      <a href="/sobre-nosotros" class="btn-link">
+        Conoce nuestra historia
+        <span class="arrow">→</span>
+      </a>
     </div>
-    <div class="image">
-      <img src="/images/aboutUs.jpeg" alt="imagen sobre nosostros">
+    <div class="about-image">
+      <img src="/images/aboutUs.jpeg" alt="Sobre nosotros" loading="lazy" />
     </div>
-  </article>
+  </div>
 </section>
 
 <style>
-  section { 
-    width: 100%;
-    padding: 120px 40px;
-    display: flex;
-    align-items: center;
+  .about-section {
+    background-color: var(--color-white);
   }
-  
-  article { 
-    width: 100%;
-    display: flex;
-    gap: 50px;
+
+  .about-inner {
     max-width: var(--max-width);
     margin: auto;
+    padding: 100px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
   }
 
-  img { 
+  .overline {
+    display: inline-block;
+    font-family: 'Inter Variable', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    margin-bottom: 12px;
+  }
+
+  h3 {
+    font-family: 'Playfair Display Variable', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .about-text p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--color-text-muted);
+    margin-bottom: 32px;
+  }
+
+  .about-image img {
     width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-card);
   }
 
-  span { 
-    color: #cfb47c;
-    font-size: 1.25rem;
+  .btn-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter Variable', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: var(--transition);
   }
 
-  h3 { 
-    font-size: 2.25rem;
+  .btn-link .arrow {
+    transition: transform 0.3s ease;
   }
 
-  p { 
-    font-size: 1.25rem;
-    color: #717171;
+  .btn-link:hover .arrow {
+    transform: translateX(4px);
   }
 
-  .text { 
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
-  }
+  @media (max-width: 768px) {
+    .about-inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 60px 20px;
+    }
 
-  .image { 
-    width: 50%;
+    .about-text {
+      order: -1;
+      text-align: center;
+    }
+
+    .about-image img {
+      height: 280px;
+    }
+
+    h3 {
+      font-size: 1.6rem;
+    }
   }
 </style>

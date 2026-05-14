@@ -3,30 +3,42 @@ import OurHistory from '../../components/OurHistory.astro';
 import Values from '../../components/Values.astro'
 ---
 
-<section>
-  <article>
-    <div>
+<section class="info-section">
+  <div class="info-grid">
+    <div class="history-col">
       <OurHistory />
     </div>
-    <div>
+    <div class="values-col">
       <Values />
     </div>
-  </article>
+  </div>
 </section>
 
 <style>
-  section { 
-    padding: 100px 40px;
+  .info-section {
+    background-color: var(--color-bg-light);
+    width: 100%;
   }
 
-  article { 
-    display: flex;
+  .info-grid {
     max-width: var(--max-width);
     margin: auto;
-    gap: 30px;
+    padding: 100px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
   }
 
-  div { 
-    width: 50%;
+  @media (max-width: 768px) {
+    .info-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 60px 20px;
+    }
+
+    .history-col {
+      order: -1;
+    }
   }
 </style>

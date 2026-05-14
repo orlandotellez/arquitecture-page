@@ -5,38 +5,38 @@ import team_2 from '../../../public/images/team-2.jpeg'
 import team_3 from '../../../public/images/team-3.jpeg'
 
 const team = [
-  { 
+  {
     img: team_1.src,
     name: "Elena Vega",
     rol: "Arquitecta principal y fundadora",
     description: "Con más de 15 años de experiencia internacional, Elena lidera la visión creativa del estudio con un enfoque en la sostenibilidad y la innovación."
-    },
-    { 
+  },
+  {
     img: team_2.src,
     name: "Carlos Mendez",
     rol: "Director de proyectos",
     description: "Especialista en gestión de obras complejas y detalles constructivos, Carlos asegura que cada diseño se materialice con la máxima calidad."
-    },
-   { 
+  },
+  {
     img: team_3.src,
     name: "Sofía Alarcon",
     rol: "Diseñadora de interiores",
     description: "Apasionada por los materiales y la luz, Sofía crea espacios interiores que aportan calidez y carácter a la arquitectura del estudio."
-    },
-
+  },
 ]
 ---
 
-<section>
-  <article>
+<section class="team-section">
+  <div class="team-inner">
     <div class="text">
-      <h3>Nuestro equipo</h3>
+      <span class="overline">Conoce al equipo</span>
+      <h3>Profesionales apasionados por la arquitectura</h3>
       <p>Un grupo diverso de arquitectos, diseñadores y pensadores unidos por la pasión por crear espacios excepcionales.</p>
     </div>
     <div class="team">
       {
       team.map((team) => (
-      <CardTeam 
+      <CardTeam
       img={team.img}
       name={team.name}
       rol={team.rol}
@@ -45,36 +45,67 @@ const team = [
       ))
       }
     </div>
-  </article>
+  </div>
 </section>
 
 <style>
-  section { 
+  .team-section {
+    background-color: var(--color-white);
     width: 100%;
-    padding: 40px 40px 120px 40px;
   }
 
-  article { 
+  .team-inner {
     max-width: var(--max-width);
     margin: auto;
+    padding: 40px 40px 100px;
   }
 
-  .text { 
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+  .overline {
+    display: inline-block;
+    font-family: 'Inter Variable', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    margin-bottom: 12px;
   }
 
   h3 {
-    font-size: 2.25rem;
-    margin-bottom: 30px;
-  } 
+    font-family: 'Playfair Display Variable', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 16px;
+  }
 
-  .team { 
-    margin-top: 40px;
+  .text p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    max-width: 550px;
+    margin-bottom: 48px;
+  }
+
+  .team {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-  } 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+  }
+
+  @media (max-width: 768px) {
+    .team-inner {
+      padding: 40px 20px 60px;
+    }
+
+    h3 {
+      font-size: 1.6rem;
+    }
+
+    .team {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
 </style>
