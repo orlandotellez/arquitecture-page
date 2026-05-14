@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getEntry } from "astro:content";
+import Image from "astro:assets";
 
 const { slug } = Astro.params;
 
@@ -22,13 +23,55 @@ const { Content } = await project.render();
     <div class="project-hero-inner">
       <span class="overline">{project.data.type}</span>
       <h1>{project.data.title}</h1>
-      <p>{project.data.description}</p>
     </div>
   </section>
 
-  <section class="project-content">
-    <div class="content-inner">
-      <Content />
+  <section class="project-detail">
+    <div class="detail-grid">
+      <!-- Columna izquierda: contenido principal -->
+      <main class="main-content">
+        <div class="main-image">
+          <Image
+            src={project.data.portada}
+            alt={project.data.title}
+            width={800}
+          />
+        </div>
+        <div class="content">
+          <Content />
+        </div>
+      </main>
+
+      <!-- Columna derecha: sidebar sticky -->
+      <aside class="sidebar">
+        <div class="sidebar-card">
+          <h3>Información del proyecto</h3>
+          <ul class="meta-list">
+            <li class="meta-item">
+              <span class="meta-label">Tipo</span>
+              <span class="meta-value">{project.data.type}</span>
+            </li>
+            <li class="meta-item">
+              <span class="meta-label">Año</span>
+              <span class="meta-value">{project.data.year}</span>
+            </li>
+            <li class="meta-item">
+              <span class="meta-label">Ubicación</span>
+              <span class="meta-value">{project.data.location}</span>
+            </li>
+            <li class="meta-item">
+              <span class="meta-label">Descripción breve</span>
+              <span class="meta-value">{project.data.description}</span>
+            </li>
+          </ul>
+          <div class="sidebar-divider"></div>
+          <div class="sidebar-tags">
+            <span class="tag">{project.data.type}</span>
+            <span class="tag">{project.data.year}</span>
+            <span class="tag">{project.data.location.split(",")[1]?.trim() || project.data.location}</span>
+          </div>
+        </div>
+      </aside>
     </div>
   </section>
 </Layout>
@@ -36,7 +79,7 @@ const { Content } = await project.render();
 <style>
   .project-hero {
     width: 100%;
-    min-height: 60dvh;
+    min-height: 55dvh;
     background-size: cover;
     background-position: center;
     background-image: linear-gradient(
@@ -46,14 +89,15 @@ const { Content } = await project.render();
     ),
     url(${project.data.portada.src});
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     color: var(--color-text);
   }
 
   .project-hero-inner {
     max-width: var(--max-width);
     margin: auto;
-    padding: 80px 40px;
+    padding: 80px 40px 60px;
+    width: 100%;
   }
 
   .overline {
@@ -72,82 +116,185 @@ const { Content } = await project.render();
     font-size: 3.5rem;
     font-weight: 700;
     line-height: 1.15;
-    margin-bottom: 20px;
   }
 
-  .project-hero-inner p {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.8);
-    max-width: 650px;
+  /* ---- Layout de detalle ---- */
+  .project-detail {
+    background-color: var(--color-white);
   }
 
-  .project-content {
-    background: var(--color-white);
-  }
-
-  .content-inner {
+  .detail-grid {
     max-width: var(--max-width);
     margin: auto;
-    padding: 80px 40px;
+    padding: 60px 40px 100px;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 56px;
+    align-items: start;
   }
 
-  .content :global(p) {
-    margin-bottom: 1.5rem;
-    line-height: 1.75;
-    font-size: 1.05rem;
-    color: var(--color-text-muted);
+  /* ---- Columna izquierda ---- */
+  .main-content {
+    min-width: 0;
+  }
+
+  .main-image img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-card);
+    margin-bottom: 40px;
+  }
+
+  .content {
+    max-width: 700px;
   }
 
   .content :global(h1) {
     font-family: 'Playfair Display Variable', serif;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 2.2rem;
     color: var(--color-primary);
+    margin-bottom: 1rem;
+    line-height: 1.25;
   }
 
   .content :global(h2) {
     font-family: 'Playfair Display Variable', serif;
-    font-size: 2rem;
-    margin-bottom: 0.8rem;
+    font-size: 1.6rem;
     color: var(--color-primary);
+    margin: 2rem 0 0.8rem;
+    line-height: 1.3;
   }
 
-  .content :global(h3) {
-    font-family: 'Playfair Display Variable', serif;
-    font-size: 1.75rem;
-    margin-bottom: 0.7rem;
-    color: var(--color-primary);
+  .content :global(p) {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    margin-bottom: 1.2rem;
   }
 
   .content :global(ul),
   .content :global(ol) {
-    margin-bottom: 1.5rem;
-    padding-left: 2rem;
+    margin-bottom: 1.2rem;
+    padding-left: 1.8rem;
   }
 
   .content :global(li) {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
     color: var(--color-text-muted);
   }
 
   .content :global(img) {
+    width: 100%;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-card);
     margin: 1.5rem 0;
   }
 
-  @media (max-width: 768px) {
+  /* ---- Sidebar sticky ---- */
+  .sidebar {
+    position: sticky;
+    top: 100px;
+    align-self: start;
+  }
+
+  .sidebar-card {
+    background: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: var(--border-radius);
+    padding: 32px 28px;
+    box-shadow: var(--shadow-card);
+  }
+
+  .sidebar-card h3 {
+    font-family: 'Playfair Display Variable', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 24px;
+    letter-spacing: 0.01em;
+  }
+
+  .meta-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .meta-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+  }
+
+  .meta-value {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    font-family: 'Playfair Display Variable', serif;
+  }
+
+  .sidebar-divider {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+  }
+
+  .sidebar-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    display: inline-block;
+    background-color: var(--color-bg-light);
+    color: var(--color-text-dark);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 900px) {
+    .detail-grid {
+      grid-template-columns: 1fr;
+      padding: 40px 20px 60px;
+      gap: 32px;
+    }
+
+    .sidebar {
+      position: static;
+    }
+
+    .sidebar-card {
+      padding: 24px;
+    }
+
     .project-hero-inner {
-      padding: 60px 20px;
+      padding: 60px 20px 40px;
     }
 
     .project-hero-inner h1 {
-      font-size: 2.2rem;
+      font-size: 2.4rem;
     }
 
-    .content-inner {
-      padding: 60px 20px;
+    .main-image img {
+      height: 280px;
     }
   }
 </style>
