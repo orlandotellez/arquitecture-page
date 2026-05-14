@@ -16,6 +16,8 @@
         <li><a href="/contacto">Contacto</a></li>
       </ul>
     </nav>
+
+    <a href="/contacto" class="cta-btn">Contactar ya</a>
   </div>
 </header>
 
@@ -83,6 +85,28 @@
     color: var(--color-accent);
   }
 
+  .cta-btn {
+    display: inline-block;
+    font-family: 'Inter Variable', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 10px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--color-primary);
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+    border: 2px solid var(--color-accent);
+    transition: var(--transition);
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(201, 169, 110, 0.35);
+    background: linear-gradient(135deg, var(--color-accent-light), var(--color-accent));
+  }
+
   @media (max-width: 768px) {
     header {
       padding: 14px 20px;
@@ -93,11 +117,16 @@
     }
 
     a {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
     }
 
     .logo h1 {
       font-size: 1.4rem;
+    }
+
+    .cta-btn {
+      font-size: 0.8rem;
+      padding: 8px 16px;
     }
   }
 </style>
