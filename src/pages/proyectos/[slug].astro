@@ -1,7 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getEntry } from "astro:content";
-import Image from "astro:assets";
 
 const { slug } = Astro.params;
 
@@ -31,11 +30,7 @@ const { Content } = await project.render();
       <!-- Columna izquierda: contenido principal -->
       <main class="main-content">
         <div class="main-image">
-          <Image
-            src={project.data.portada}
-            alt={project.data.title}
-            width={800}
-          />
+          <img src={project.data.portada.src} alt={project.data.title} />
         </div>
         <div class="content">
           <Content />
