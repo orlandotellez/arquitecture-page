@@ -25,7 +25,7 @@ import '@fontsource-variable/inter';
 </html>
 
 <style is:global>
-  :root {
+:root {
     --max-width: 1200px;
     --color-primary: #1a1a2e;
     --color-secondary: #16213e;
@@ -42,6 +42,7 @@ import '@fontsource-variable/inter';
     --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
     --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.15);
     --transition: all 0.3s ease;
+    --header-height: 76px;
   }
 
   * {
@@ -65,11 +66,15 @@ import '@fontsource-variable/inter';
   a {
     text-decoration: none;
     color: inherit;
-    transition: var(--transition);
+    transition: color 0.3s ease;
+  }
+
+  .site-header a {
+    color: var(--color-text-dark);
   }
 
   main {
-    margin-top: 80px;
+    margin-top: var(--header-height);
   }
 
   img {
