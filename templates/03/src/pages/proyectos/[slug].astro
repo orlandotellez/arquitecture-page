@@ -1,0 +1,158 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ProjectHero from '../../sections/projects/ProjectHero.astro';
+import ProjectInfo from '../../sections/projects/ProjectInfo.astro';
+import ProjectNarrative from '../../sections/projects/ProjectNarrative.astro';
+import ProjectGallery from '../../sections/projects/ProjectGallery.astro';
+import ProjectTechnical from '../../sections/projects/ProjectTechnical.astro';
+import ProjectDrawings from '../../sections/projects/ProjectDrawings.astro';
+import ProjectRelated from '../../sections/projects/ProjectRelated.astro';
+
+export function getStaticPaths() {
+  const projects = [
+    {
+      slug: 'casa-mirador',
+      title: 'CASA MIRADOR',
+      category: 'RESIDENTIAL / 2023',
+      heroImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBn4W05OW8ITD8jTOvb1LMHgC-B7k6XlPguFw2hXtb0wVP4yYdR7D75ypaay7RnWLEBwW_r_qqT4IEs_5pfxgcAO2oFJw9gGNBL8unWhjp6Jl-ShmROq_T5QyV5gbzdfp7Sx2AHg3XBRqY_JNiypMZZtJT13f0yqgflOUb3DFSx0apcxIrp9MvUW4kc0ERDtQV1xDNOK-Q42Gbr1GUjvoggkUmGt3NW6t52G79mR_JE74wp8p330ctG4RTDjRmx74rzes5oXkV_Bo0',
+      description: 'A minimalist luxury residence with floor-to-ceiling glass walls and dark steel framing.',
+      location: 'Barcelona, ES',
+      area: '320 m²',
+      status: 'Completed',
+      year: '2023',
+      quote: '"LA LUZ ES EL MATERIAL DE CONSTRUCCIÓN PRINCIPAL."',
+      paragraphs: [
+        'Located on a hillside with panoramic views, Casa Mirador explores the relationship between inside and outside through large glass panels.',
+        'The dark steel frame creates a bold contrast with the white concrete walls, defining spaces that blur the boundary with nature.'
+      ],
+      gallery: [
+        { src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBn4W05OW8ITD8jTOvb1LMHgC-B7k6XlPguFw2hXtb0wVP4yYdR7D75ypaay7RnWLEBwW_r_qqT4IEs_5pfxgcAO2oFJw9gGNBL8unWhjp6Jl-ShmROq_T5QyV5gbzdfp7Sx2AHg3XBRqY_JNiypMZZtJT13f0yqgflOUb3DFSx0apcxIrp9MvUW4kc0ERDtQV1xDNOK-Q42Gbr1GUjvoggkUmGt3NW6t52G79mR_JE74wp8p330ctG4RTDjRmx74rzes5oXkV_Bo0', alt: 'Exterior view' },
+        { src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBn4W05OW8ITD8jTOvb1LMHgC-B7k6XlPguFw2hXtb0wVP4yYdR7D75ypaay7RnWLEBwW_r_qqT4IEs_5pfxgcAO2oFJw9gGNBL8unWhjp6Jl-ShmROq_T5QyV5gbzdfp7Sx2AHg3XBRqY_JNiypMZZtJT13f0yqgflOUb3DFSx0apcxIrp9MvUW4kc0ERDtQV1xDNOK-Q42Gbr1GUjvoggkUmGt3NW6t52G79mR_JE74wp8p330ctG4RTDjRmx74rzes5oXkV_Bo0', alt: 'Interior' },
+        { src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBn4W05OW8ITD8jTOvb1LMHgC-B7k6XlPguFw2hXtb0wVP4yYdR7D75ypaay7RnWLEBwW_r_qqT4IEs_5pfxgcAO2oFJw9gGNBL8unWhjp6Jl-ShmROq_T5QyV5gbzdfp7Sx2AHg3XBRqY_JNiypMZZtJT13f0yqgflOUb3DFSx0apcxIrp9MvUW4kc0ERDtQV1xDNOK-Q42Gbr1GUjvoggkUmGt3NW6t52G79mR_JE74wp8p330ctG4RTDjRmx74rzes5oXkV_Bo0', alt: 'Detail' }
+      ],
+      technical: [
+        { label: '01 / Programa', value: '3 Recámaras, Sala, Cocina, Terraza.' },
+        { label: '02 / Estructura', value: 'Hormigón armado y estructura de acero.' },
+        { label: '03 / Materiales', value: 'Hormigón, Acero negro, Vidrio.' },
+        { label: '04 / Equipo', value: 'PLANE Studio (Arch).' }
+      ],
+      drawings: [],
+      related: []
+    },
+    {
+      slug: 'oficinas-axis',
+      title: 'OFICINAS AXIS',
+      category: 'CORPORATIVO / 2022',
+      heroImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCwNfa4wMWS0LC7oKI6TIWWPU1Mk2bYrWtrMXhokiv31pMaHcKOWpivTIu2YHiV7Uf2v5PbePYzUEVgJkf5K5q4oy8_X1TjWSxMETc9sRi7L0mYDaejtonclXatgXA_TuL4wZiAfir4qykQeGJAXLJnWWdJi6ngx9079bTNV0sr8us5F0FV02aikyvVqxrXu6Zgcj9MBFaQEKAkTWNlvM3CWx6t0OHVpfiBbcXap6Fx5X9G9K-dO632vOprN1CEydEYIdaWm--d4O8',
+      description: 'A minimalist office lobby featuring a rhythmic sequence of vertical wooden slats.',
+      location: 'Madrid, ES',
+      area: '1,200 m²',
+      status: 'Completed',
+      year: '2022',
+      quote: '"EL ESPACIO DE TRABAJO DEBE FOMENTAR LA COLABORACIÓN."',
+      paragraphs: [
+        'Axis Offices redefines the corporate workspace through a design that prioritizes natural light and flexibility.',
+        'The wooden slats create a warm atmosphere while providing acoustic control for open areas.'
+      ],
+      gallery: [
+        { src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCwNfa4wMWS0LC7oKI6TIWWPU1Mk2bYrWtrMXhokiv31pMaHcKOWpivTIu2YHiV7Uf2v5PbePYzUEVgJkf5K5q4oy8_X1TjWSxMETc9sRi7L0mYDaejtonclXatgXA_TuL4wZiAfir4qykQeGJAXLJnWWdJi6ngx9079bTNV0sr8us5F0FV02aikyvVqxrXu6Zgcj9MBFaQEKAkTWNlvM3CWx6t0OHVpfiBbcXap6Fx5X9G9K-dO632vOprN1CEydEYIdaWm--d4O8', alt: 'Lobby' },
+        { src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCwNfa4wMWS0LC7oKI6TIWWPU1Mk2bYrWtrMXhokiv31pMaHcKOWpivTIu2YHiV7Uf2v5PbePYzUEVgJkf5K5q4oy8_X1TjWSxMETc9sRi7L0mYDaejtonclXatgXA_TuL4wZiAfir4qykQeGJAXLJnWWdJi6ngx9079bTNV0sr8us5F0FV02aikyvVqxrXu6Zgcj9MBFaQEKAkTWNlvM3CWx6t0OHVpfiBbcXap6Fx5X9G9K-dO632vOprN1CEydEYIdaWm--d4O8', alt: 'Office' }
+      ],
+      technical: [
+        { label: '01 / Programa', value: 'Oficinas open space, Salas de reuniones, Reception.' },
+        { label: '02 / Estructura', value: 'Steel frame y losa de hormigón.' },
+        { label: '03 / Materiales', value: 'Madera de roble, Hormigón, Vidrio.' },
+        { label: '04 / Equipo', value: 'PLANE Studio (Arch).' }
+      ],
+      drawings: [],
+      related: []
+    },
+    {
+      slug: 'casa-bosque',
+      title: 'CASA BOSQUE',
+      category: 'RESIDENTIAL / 2023',
+      heroImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBdKN8p-gm7nRC3iBnTZUD60wyPoPlinxKr98v7LSY6191vWa_JboPzuQbLc7fKTpAhC-I0a1EhlE4RzbFjLne8BzHTj2s90iRCsOaryvUBqGorY3BkQVHGJnjB4uhAo-53jok4gpMEIaNv93DuAk7WiVFYAWgeYC7cfCJh1asPYJleE5UA4EvegIAdsANO0JY9gsqwYhMs7ybkXVRIdQRMxvn_gTh-Ao5i229wz1ZZQGXyjmQ2Oq5tLeUe4XypQYOm3RQ48HybHMY',
+      description: 'A sanctuary of concrete and light integrated into the vertical rhythm of the forest canopy.',
+      location: 'Valle de Bravo, MX',
+      area: '450 m²',
+      status: 'Completed',
+      year: '2023',
+      quote: '"LA ARQUITECTURA ES EL ENCUENTRO DE LA LUZ CON LA FORMA."',
+      paragraphs: [
+        'Located in the heart of a temperate forest, Casa Bosque emerges as an exercise in structural honesty. The project is defined by two perpendicular volumes that adapt to the rugged topography, minimizing its footprint and preserving the existing pines.',
+        'Raw materials like board-formed concrete and locally sourced timber create a dialogue with the landscape. The interior spaces are organized around a central void that acts as a light well, blurring the boundaries between the built environment and the natural world.'
+      ],
+      gallery: [
+        { src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDLumR_1T_64Gj7aZYnTKm9VuU-JHi9JJ_baMQmxpuLLzC7lnvOQ9b4dF6iUmwPdh-2pz0-3SRvp9EjrnTPUiCRQcNHPbSTjf0jwNzsKf0fVmt0X0_nMzixUC0wHW-mMMX6qsKFd8WSxPvofdIUlZ1krWY-zsKj4mFCqVM_euPnf13nPWk1OasojDc0M9PUTRXMU9CvdRzgWvditJ1lQfbLjbOCVtZzbk7S-oZeYQlTY_4kJ4vvQvyN1wln2JOM19ITxsEZaRxg8uI', alt: 'Double-height living room' },
+        { src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCbKR5qJ3_PzzM42CmsKGx7I8TcmqQwmiwB9TbISHDvrgRoQalMKarjibJhPK-hdaCgEx1PpRiUoUb7mz2MfEV7MRP6Ljm-1bZp9gQGopWL1LdG0FglkzD_I8eyZ9DM9F4F8PuvlgpIoxbmqkP4m2yBUnaL-ZYB6CauH5PspiL8P4im328IP6i-jbgJbX33_7itp8XKVstBcNMw_zOaKFmQMIO_kmNXOqHrfn0vf8u2B95Hmh43fg1TzyNAdgwoATUTl-DnrxW54kQ', alt: 'Cantilevered staircase' },
+        { src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC5n_3olO_KjHOcX9yeIe6gnGO-qMsHD2Qj6Q2_ifE5V5-nI_aRy4e9ztI1QqLbsqbvsmkl_HQ2AMjja40Kads33ATxoXUvmKM855altLWZroY_lkdFhHUa-EvrdSzMNS739NyN2SxjK9ZO5tNkvOeknmujMvNyF7JjHeX2L3kX0Wcqx9SdcroA0zYZ2dkQkyVKEZNUFJcSgnJC0OGbIdFpwYKBkQqe47ZFPqHDTebYMkiFLxgt5I8PMOV_aUrRJf8SlHMz9vQ-d8E', alt: 'Steel frame and wood cladding' },
+        { src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA9czCkRP393bSw1e_qkXFC3l9hcNm0NIkltAB06f5zosqlet4k2Nb2NwLoSM2ob2qwVYG4OuOJmxrXokkh7GaqLz_c8c3vld3mwJ_gdYh5FHwMJm__CxaJDsJDvUki4r5K3coMVZGE5cgHIKvxGTiMl1DpMLuSSmEWAmFdZci8ENUj143R5xRMb95zRX0N4XlnVxDIeVx0CHloMJ0stoUsN5YLrkFYGoYA3FFFEWKdVzMUigtSCKyTvhVd1kG6wHZ9SA1GNtDKuiA', alt: 'Bedroom with forest view' },
+        { src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAgHshd9KRZe0R_Gce8oRBTPxqScIeWGtZFwyxiLIbMozOhJerczyQDPwsBc3z9_hEZeP4omOyeCRAz3eSeylTsN3_L1HyQ6fzg4nVxDUglRnOh7dSLhEoH8sUZV_YqDf8o-xEmOWYW29upLRibJnjTlg0_WkWff5Ofc_-ktzSdeOk9zwoicJ_Gd1bnkIYFR-VPPeuqY7n-iqkw35pih-etwUx4pnfxm2Vmf6i9LEAQ9VGN4F5J7CB9y8v_ZoPbqN3RXzM9A1sOUDQ', alt: 'Outdoor terrace' },
+        { src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDkootTb22z9ob4FBMu3TeOZIMf9VK-HOBaS8-yYQf2pnwyRmRgQQ_i39jlD3z3PYt6CRiD1DqmI1C_qF5DUjqAspilbLMkjC9pd_SsDoFhSmMLTb3ajnUGDN7rDZETXOI_iioymuF_mlJ3sEaCjuGo1jpDzJ3wjBPKmPvafrHK-tHNSgAiC1K63QRDtaYo_vNcbO4WM1nanTnrBNYapQQGufVJikUiLdbXVUNnVtbSw0c5IZM8AozVe1Iy0ByReXm4fVZ7hC-8E40', alt: 'Exterior night shot' }
+      ],
+      technical: [
+        { label: '01 / Programa', value: '4 Recámaras, Estudio, Sala de doble altura, Terraza perimetral, Cava subterránea.' },
+        { label: '02 / Estructura', value: 'Muros de carga de concreto armado y vigas de acero de alta resistencia.' },
+        { label: '03 / Materiales', value: 'Concreto aparente, Madera de encino, Piedra volcánica, Vidrio templado.' },
+        { label: '04 / Equipo', value: 'PLANE Studio (Arch), Arq. Rodrigo Saenz (Lead), Ing. Pedro Varela (Str).' }
+      ],
+      drawings: [
+        { src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCytNkF2E7OrRxp4cUbtFMM9t5WEv3KO54SlWYJ8FdYBO2KKgKwvw6LLSgKgV9ORVZ-4n6UnzQEmh_ZLxohMwLXZFmBe8WvYgexRwJq7wh1WsAueWR01rpCAXTnO6KWK3NJ-K1_swtiNNHB8HlllTlSIinO3lnfpPFciS63fTe-sQZl9RXEoc-e3PcJGQXtl592UtsFF2WqnsJzMb8m-LZezjyjhTEDt5IztrijSCdt_HNQqiCzBTND6LszGCswnpajAqUfX4CapEA', alt: 'Site plan' },
+        { src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDT4_ckRh977razuJbjLi5vPEs9eQq5yPMGyAug2w0GladJu8hSksZHJhBTgb_BSb-8kzKzsRr0aDcOl5olKyCa4J2HUPiDKOtetLtJZ5VRts8aQrzGVsuJjkUk6enTuyMY3ru1lQvLoaoZpkOSXtmHqMgab2E2gqgNswyEIehqS9G7vkCjqu3_VKrHzfiwcSMm4a7iBFsZCealzV79D_L8znxu74k5obfYsXSh5ra2LtrE_3obnSVImOkg4jd8XU60exwb-7ZcM0g', alt: 'Cross section' },
+        { src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA5r-oJ2EmUTreLhgSlmvfVLdMUzQBwhLj4Y0y_EX3IEzMXJiP2LSVEHUoqPZBneogrJdk8bmskNIcI-6TFbvlIwfLJMIF4LWegqiCtHJpsF4GIv3nBL1gvXEl7Xb3ieho7J3SsSPbz1l44eRk-_AvyBfkLqqJXO8blt8Lrwni8WnDNvH9pn8i_yXIEx7UFIyzW-r6ay5YqP47M1F8MIaJvZ9Ut_ty6Qnqt83P82BZal0AvVgKyxXi_BAt1EIjbtppwSzn83LJiigQ', alt: 'Floor plan' }
+      ],
+      related: [
+        { slug: 'refugio-lago', title: 'Refugio del Lago', subtitle: 'Lakeside Pavilion', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAl5QwGE4qG2kNU1_l25DvTU-XAQopvHV6WAgle3m9ng9GLQA3t96W08IoGT2aMVo1BgTRmVSTTrMhUNS63MZfaEp-JLmvfvr3_UIJh7QHdRUB8cuaziJZalNazb5PYtL9CAPDyvBorLZP2Pe6fOZ9uyTwAmatTxPS-uBcGUe1CpRyl5G7DbdKnNS0UAxNBiyYwd7WrnB1yN9I9y5htoeDApfhfZiADGR3Sc9-AhKqvChOl7Wvoid3PdTSz54X2SZjEraByRehQRzU' },
+        { slug: 'casa-desierto', title: 'Casa Desierto', subtitle: 'Arid Sanctuary', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBaN-tkp7gLNx6ZGxEK5-1_l-rB8Hc8D5sGdOPw0eBZe7WuxIfODphb62DRDQ5OUKcP7Uv0dF1kVyvtHaf08Gu4GYNKCJ37zxj7LSzSFFuvc-8o4aG5oH3nk_cuwavHvxWIdJHw_WfFFzU7YjiMH-wAuKx9kqeGUw01bnJYU85xPrR_jQKyUcPD5bq6II7Td4znsfXRkOmr27obYzgYU5we3ATfRntBm-G-uo5If-HEV-Fgle0deK5_Ch6qv5WItl8V0MkaJ22VLNw' },
+        { slug: 'edificio-norte', title: 'Edificio Norte', subtitle: 'Corporate HQ', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBhKHFB7JWywEWGzWU4wvT2KTR-GdeOGnUw20tZCaUdYMBDBt8siK3iZ4xOr7dOYShPQNrGvOurUqBu2gLGXjVhfvfDQTKSnIV3CA5ev-vwscMkTf2ayGg06Ulot0SjjWuXPFXZ5n53KrcmnwDLcdaMDrL1li9i4i8MvCOktMWEqYxlCIb612zTo_DB6vpC-C3_IK7qs3fs49YflFDfqMAg3ULnnbMAxEOtsegJb4S53qUismxFSJQdkI9z9J8zoOStQTzqcIKCBcA' }
+      ]
+    }
+  ];
+
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={project.title}>
+  <Header currentPage="proyectos" />
+
+  <main>
+    <ProjectHero
+      title={project.title}
+      category={project.category}
+      image={project.heroImage}
+    />
+
+    <ProjectInfo
+      category={project.category}
+      title={project.title}
+      description={project.description}
+      location={project.location}
+      area={project.area}
+      status={project.status}
+      year={project.year}
+    />
+
+    <ProjectNarrative
+      quote={project.quote}
+      paragraphs={project.paragraphs}
+    />
+
+    <ProjectGallery images={project.gallery} />
+
+    <ProjectTechnical items={project.technical} />
+
+    <ProjectDrawings drawings={project.drawings} />
+
+    <ProjectRelated projects={project.related} />
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,101 @@
+---
+interface RelatedProject {
+  slug: string;
+  title: string;
+  subtitle: string;
+  image: string;
+}
+
+interface Props {
+  projects: RelatedProject[];
+}
+
+const { projects } = Astro.props;
+---
+
+<section class="related">
+  <div class="related-container">
+    <h4 class="related-title">Related Projects</h4>
+
+    <div class="related-grid">
+      {projects.map((project) => (
+        <a href={`/proyectos/${project.slug}`} class="related-card">
+          <div class="related-image">
+            <img src={project.image} alt={project.title} />
+          </div>
+          <span class="related-category">{project.title}</span>
+          <h5 class="related-subtitle">{project.subtitle}</h5>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .related {
+    padding: 128px var(--spacing-margin-desktop);
+    border-top: 1px solid #e5e5e5;
+  }
+
+  .related-container {
+    max-width: var(--spacing-container-max);
+    margin: 0 auto;
+  }
+
+  .related-title {
+    font-size: var(--text-headline-md);
+    text-transform: uppercase;
+    margin-bottom: 64px;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-gutter);
+  }
+
+  .related-card {
+    display: block;
+    cursor: pointer;
+  }
+
+  .related-image {
+    overflow: hidden;
+    aspect-ratio: 16/10;
+    margin-bottom: 24px;
+  }
+
+  .related-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .related-card:hover .related-image img {
+    transform: scale(1.05);
+  }
+
+  .related-category {
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    text-transform: uppercase;
+    color: var(--color-primary);
+  }
+
+  .related-subtitle {
+    font-size: var(--text-headline-md);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  @media (max-width: 768px) {
+    .related {
+      padding: 80px var(--spacing-margin-mobile);
+    }
+
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

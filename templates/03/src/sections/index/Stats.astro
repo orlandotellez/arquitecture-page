@@ -1,0 +1,61 @@
+---
+const stats = [
+  { number: '15+', label: 'Años' },
+  { number: '80+', label: 'Proyectos' },
+  { number: '12', label: 'Premios' },
+  { number: '4', label: 'Países' },
+];
+---
+
+<section class="stats">
+  <div class="stats-container">
+    {stats.map((stat) => (
+      <div class="stat-item">
+        <div class="stat-number">{stat.number}</div>
+        <div class="stat-label">{stat.label}</div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .stats {
+    background-color: var(--color-on-background);
+    padding: 64px var(--spacing-margin-desktop);
+    gap: var(--spacing-gutter);
+    text-align: center;
+  }
+
+  .stats-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .stat-number {
+    font-family: var(--font-heading);
+    font-size: var(--text-headline-lg);
+    color: var(--color-surface-bright);
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-surface-dim);
+  }
+
+  @media (max-width: 768px) {
+    .stats {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 48px var(--spacing-margin-mobile);
+    }
+
+    .stat-number {
+      font-size: var(--text-headline-lg-mobile);
+    }
+  }
+</style>

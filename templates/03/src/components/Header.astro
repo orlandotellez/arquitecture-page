@@ -1,0 +1,168 @@
+---
+interface Props {
+  currentPage?: 'inicio' | 'proyectos';
+}
+
+const navLinks = [
+  { href: '/', label: 'INICIO', page: 'inicio' },
+  { href: '/proyectos', label: 'PROYECTOS', page: 'proyectos' },
+  { href: '/#nosotros', label: 'NOSOTROS', page: 'nosotros' },
+  { href: '/#servicios', label: 'SERVICIOS', page: 'servicios' },
+  { href: '/#contacto', label: 'CONTACTO', page: 'contacto' },
+];
+---
+
+<nav class="header" id="main-nav">
+  <div class="header-container">
+    <a href="/" class="logo">
+      PLANE<span class="dot">.</span>
+    </a>
+
+    <div class="nav-links">
+      {navLinks.map((link) => (
+        <a href={link.href} class="nav-link" data-page={link.page}>
+          {link.label}
+        </a>
+      ))}
+    </div>
+
+    <button class="mobile-menu-btn" aria-label="Menú">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+</nav>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    height: 80px;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-outline-variant);
+    display: flex;
+    align-items: center;
+  }
+
+  .header-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-margin-desktop);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-family: var(--font-heading);
+    font-size: var(--text-headline-md);
+    font-weight: 700;
+    color: var(--color-on-surface);
+    letter-spacing: -0.01em;
+  }
+
+  .dot {
+    color: var(--color-primary);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+  }
+
+  .nav-link {
+    font-family: var(--font-heading);
+    font-size: var(--text-headline-md);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--color-on-surface);
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--color-primary);
+  }
+
+  .nav-link.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    color: var(--color-on-surface);
+  }
+
+  .mobile-menu-btn .material-symbols-outlined {
+    font-size: 24px;
+  }
+
+  @media (max-width: 768px) {
+    .header-container {
+      padding: 0 var(--spacing-margin-mobile);
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const path = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Set initial active based on current page
+    if (path === '/' || path === '/index.html') {
+      // Home page - set INICIO as active
+      const heroLink = document.querySelector('.nav-link[href="/"]');
+      if (heroLink) heroLink.classList.add('active');
+    } else if (path.includes('/proyectos')) {
+      // Proyectos page - set PROYECTOS as active
+      const proyectosLink = document.querySelector('.nav-link[href="/proyectos"]');
+      if (proyectosLink) proyectosLink.classList.add('active');
+    }
+
+    // Only run scroll detection on home page
+    if (path !== '/' && path !== '/index.html') return;
+
+    function onScroll() {
+      const scrollPos = window.scrollY + 150;
+      
+      const sections = [
+        { id: 'contacto', href: '/#contacto' },
+        { id: 'servicios', href: '/#servicios' },
+        { id: 'nosotros', href: '/#nosotros' },
+        { id: 'proyectos', href: '/#proyectos' },
+        { id: 'hero', href: '/' }
+      ];
+
+      for (const section of sections) {
+        const el = document.getElementById(section.id);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          
+          if (scrollPos >= top && scrollPos < top + height) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            const activeLink = document.querySelector(`.nav-link[href="${section.href}"]`);
+            if (activeLink) activeLink.classList.add('active');
+            break;
+          }
+        }
+      }
+    }
+
+    window.addEventListener('scroll', onScroll);
+  });
+</script>

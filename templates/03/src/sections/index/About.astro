@@ -1,0 +1,140 @@
+---
+const values = [
+  {
+    number: '01',
+    title: 'Rigor técnico',
+    description: 'Cada detalle es analizado para garantizar la viabilidad y perfección de la obra.'
+  },
+  {
+    number: '02',
+    title: 'Escala humana',
+    description: 'Proyectamos espacios que responden a las necesidades reales del usuario final.'
+  },
+  {
+    number: '03',
+    title: 'Impacto duradero',
+    description: 'Arquitectura pensada para envejecer con dignidad y relevancia conceptual.'
+  },
+];
+
+const studioImage = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBUsHDlYp0iHVDnt5UDYCw7LUGNKCnXjj1GcIRsT4FG4EJlwZE-qgkuShD_C-3kPBMRUk_AIuAn-Qztnj6zGQyNpoFGoqLNK64ENYc7bLM3zxfcf8oJ9GIUJME6oh9wX71R1Sw8tf4FH2TJQfWIkDtyBWbpzsZ8akObFBEU6Ml8wefg-O-46Mn6_ZSqGSKhtkNEI6lhzAa1rcIXqcNY8b-VytwIC2GXSLdgDjD-4xQNUq56PuQv4uqXJgSiR-2tooOzocn8yEQKuG8';
+---
+
+<section class="about">
+  <div class="about-container">
+    <div class="about-content">
+      <h2 class="about-title">
+        Un estudio que diseña con <span class="italic">criterio</span>, no con tendencias.
+      </h2>
+
+      <div class="values-list">
+        {values.map((value) => (
+          <div class="value-item">
+            <span class="value-number">{value.number}</span>
+            <div class="value-text">
+              <h4 class="value-title">{value.title}</h4>
+              <p class="value-description">{value.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="about-image">
+      <img src={studioImage} alt="Studio Interior" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    padding: 128px var(--spacing-margin-desktop);
+    background-color: var(--color-surface-container-low);
+    border-top: 1px solid var(--color-outline-variant);
+    border-bottom: 1px solid var(--color-outline-variant);
+  }
+
+  .about-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--spacing-gutter);
+    align-items: center;
+  }
+
+  .about-content {
+    grid-column: span 6;
+  }
+
+  .about-title {
+    font-size: var(--text-headline-lg);
+    line-height: 1.2;
+    margin-bottom: 48px;
+  }
+
+  .italic {
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .values-list {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .value-item {
+    display: flex;
+    gap: 24px;
+  }
+
+  .value-number {
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  .value-title {
+    font-size: var(--text-headline-md);
+    margin-bottom: 8px;
+  }
+
+  .value-description {
+    font-size: var(--text-body-md);
+    color: var(--color-on-surface-variant);
+    max-width: 320px;
+  }
+
+  .about-image {
+    grid-column: span 6;
+    position: relative;
+    height: 100%;
+  }
+
+  .about-image img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 1px solid var(--color-outline-variant);
+  }
+
+  @media (max-width: 768px) {
+    .about {
+      padding: 80px var(--spacing-margin-mobile);
+    }
+
+    .about-container {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .about-content {
+      order: 2;
+    }
+
+    .about-image {
+      order: 1;
+    }
+  }
+</style>

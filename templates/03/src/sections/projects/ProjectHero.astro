@@ -1,0 +1,35 @@
+---
+interface Props {
+  title: string;
+  category: string;
+  image: string;
+}
+
+const { title, category, image } = Astro.props;
+---
+
+<header class="project-hero">
+  <img src={image} alt={title} class="hero-image" />
+</header>
+
+<style>
+  .project-hero {
+    position: relative;
+    width: 100%;
+    height: 665px;
+    margin-top: 80px;
+    overflow: hidden;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .project-hero {
+      height: 400px;
+    }
+  }
+</style>

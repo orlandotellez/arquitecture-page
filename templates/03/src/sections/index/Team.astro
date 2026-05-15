@@ -1,0 +1,129 @@
+---
+const team = [
+  {
+    name: 'MARC PLANE',
+    role: 'Fundador & Arquitecto Senior',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCGYbyZit7Srp4A_JRepe8ersUrcJx5D2Rmym78LCzO-_od8Xcs3eoPD-jgHgr0qy9GD-H9CRai1YZjibkuqt2rAto-FT08n5Jsm2Vi-FD4LEy07WLbs_sx4utk6k3uqE5SoX4qd6-WcKy7suoZ7D8D7vm2BBlPEy8_LbT7G8lv9Tm9hJxxWv4xr0VWEMIy4aBUEX0iwz6MIMVvMMUODsYkwpMylSJNUfAHvQsIHoCdlc5IdzVh9ebFyBZNBxRj6yjoM0V6357KJag'
+  },
+  {
+    name: 'ELENA VIVES',
+    role: 'Directora de Diseño',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAiwCPJSvt0ThcUk6tPx3QHTBPM7dcqfVkAO9vp3_jm4BfO-y8HOVWp5sq7p5GRBEdUABBCrEMiUXnVQDEMhJ3dZ0XU-tS69YttTSkqepg0tt7cFQXMqVNbFPHi1b4OaDaar-ZVqy1DgBlHW4gLMPE3gSEO3oD5KhvGOGc18T4BJLAg23VHTTeukNwHrCT78jH68I4YUjFI2akQPd_s4dSk_2Z4KBAAJ5t_c9vi3FgcwJzLirjdFAG7tf53mj6tudmXt6QL6kBM5ak'
+  },
+  {
+    name: 'DAVID ROS',
+    role: 'Líder Técnico',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCnnfSPic0CI-JUK8edrftiBHEPzZ9waO5YiRR6_9NL47J20KsGWPZPJSAIzv9Wpvg6dbea5Er1TJV6OX63r0kcRrv8ciYTrJydBO6Fbqh_2CPUt515tRg6xr2kdMfnUxJxIyx2XdgbBc_xHNEDnXTZE95FrcxUnS3lS9qVkhRAWIinbcd7_1hNZr4TGTrjvjkoKh1ZUogvbFNYv4bcuVfYUKNzC4uR6UU6ptDlXTJdYXmZQO_FbAbu1YGYricstjrRXOf-fYrKIcY'
+  },
+  {
+    name: 'SARA LOZANO',
+    role: 'Diseño de Interiores',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAd_rwS2OwjV9ULs0dpqrZAlf7t0F1ackBig1MttD0pMZlPAuJTMMXApV12hvb-OQeCojMyPck7-hVrOe54Yt_6tz976cYdf2l7S51zFjZpUYkKNW2xm9P-FgsPNEp9dVF6YnIHI6aHwN0FF1tX2nV9A7BvH2PDHeiJlbhZb3M2pt-gVuf6QZLxWHmbUKdDrHRzmGJ_S8dfIJvwgIFUD2atkqNBFDLFzrgQHxPwPLOwYQ_YjgqgpgaeEFwnMTkJ4oX8-1_llBRSFlA'
+  },
+];
+---
+
+<section class="team">
+  <div class="team-header">
+    <h2 class="section-title">El Equipo</h2>
+    <span class="section-label">02 — TALENTO</span>
+  </div>
+
+  <div class="team-grid">
+    {team.map((member) => (
+      <div class="team-member">
+        <div class="member-image">
+          <img src={member.image} alt={member.name} class="image-grayscale" />
+        </div>
+        <h4 class="member-name">{member.name}</h4>
+        <p class="member-role">{member.role}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .team {
+    padding: 128px var(--spacing-margin-desktop);
+  }
+
+  .team-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 64px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--color-outline-variant);
+  }
+
+  .section-title {
+    font-size: var(--text-headline-lg);
+    text-transform: uppercase;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-on-surface-variant);
+    margin-bottom: 8px;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-gutter);
+  }
+
+  .team-member {
+    cursor: pointer;
+  }
+
+  .member-image {
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    margin-bottom: 24px;
+  }
+
+  .member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .member-name {
+    font-size: var(--text-headline-md);
+    margin-bottom: 8px;
+  }
+
+  .member-role {
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-on-surface-variant);
+  }
+
+  @media (max-width: 1024px) {
+    .team-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .team {
+      padding: 80px var(--spacing-margin-mobile);
+    }
+
+    .team-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .team-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

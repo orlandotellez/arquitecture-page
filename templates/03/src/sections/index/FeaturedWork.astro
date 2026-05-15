@@ -1,0 +1,175 @@
+---
+const projects = [
+  {
+    category: 'Residencial / 2023',
+    title: 'CASA MIRADOR',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBn4W05OW8ITD8jTOvb1LMHgC-B7k6XlPguFw2hXtb0wVP4yYdR7D75ypaay7RnWLEBwW_r_qqT4IEs_5pfxgcAO2oFJw9gGNBL8unWhjp6Jl-ShmROq_T5QyV5gbzdfp7Sx2AHg3XBRqY_JNiypMZZtJT13f0yqgflOUb3DFSx0apcxIrp9MvUW4kc0ERDtQV1xDNOK-Q42Gbr1GUjvoggkUmGt3NW6t52G79mR_JE74wp8p330ctG4RTDjRmx74rzes5oXkV_Bo0',
+    slug: 'casa-mirador',
+    size: 'large'
+  },
+  {
+    category: 'Corporativo / 2022',
+    title: 'OFICINAS AXIS',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCwNfa4wMWS0LC7oKI6TIWWPU1Mk2bYrWtrMXhokiv31pMaHcKOWpivTIu2YHiV7Uf2v5PbePYzUEVgJkf5K5q4oy8_X1TjWSxMETc9sRi7L0mYDaejtonclXatgXA_TuL4wZiAfir4qykQeGJAXLJnWWdJi6ngx9079bTNV0sr8us5F0FV02aikyvVqxrXu6Zgcj9MBFaQEKAkTWNlvM3CWx6t0OHVpfiBbcXap6Fx5X9G9K-dO632vOprN1CEydEYIdaWm--d4O8',
+    slug: 'oficinas-axis',
+    size: 'small'
+  },
+];
+---
+
+<section class="featured-work">
+  <div class="featured-header">
+    <h2 class="section-title">Proyectos Destacados</h2>
+    <div class="header-right">
+      <span class="section-label">01 — PORTFOLIO</span>
+      <a href="/proyectos" class="view-all">Ver todos los proyectos</a>
+    </div>
+  </div>
+
+  <div class="projects-grid">
+    {projects.map((project, index) => (
+      <a href={`/proyectos/${project.slug}`} class:list={['project-card', project.size]}>
+        <div class="project-image">
+          <img src={project.image} alt={project.title} />
+        </div>
+        <div class="project-info">
+          <div>
+            <p class="project-category">{project.category}</p>
+            <h3 class="project-title">{project.title}</h3>
+          </div>
+          <span class="material-symbols-outlined">arrow_outward</span>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .featured-work {
+    padding: 128px var(--spacing-margin-desktop);
+  }
+
+  .featured-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 64px;
+    padding-bottom: 32px;
+    border-bottom: 2px solid var(--color-on-background);
+  }
+
+  .header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+
+  .section-title {
+    font-size: var(--text-headline-lg);
+    text-transform: uppercase;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-on-surface-variant);
+  }
+
+  .view-all {
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    text-transform: uppercase;
+    color: var(--color-primary);
+    text-decoration: underline;
+    transition: color 0.2s ease;
+  }
+
+  .view-all:hover {
+    color: var(--color-on-surface);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--spacing-gutter);
+  }
+
+  .project-card {
+    display: block;
+    cursor: pointer;
+  }
+
+  .project-card.large {
+    grid-column: span 7;
+  }
+
+  .project-card.small {
+    grid-column: span 5;
+    margin-top: 96px;
+  }
+
+  .project-image {
+    overflow: hidden;
+    border: 1px solid var(--color-outline-variant);
+    aspect-ratio: 4/5;
+    margin-bottom: 24px;
+  }
+
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+
+  .project-card:hover .project-image img {
+    transform: scale(1.05);
+  }
+
+  .project-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .project-category {
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+  }
+
+  .project-title {
+    font-size: var(--text-headline-md);
+  }
+
+  .project-info .material-symbols-outlined {
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .featured-work {
+      padding: 80px var(--spacing-margin-mobile);
+    }
+
+    .featured-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .projects-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .project-card.small {
+      margin-top: 0;
+    }
+  }
+</style>

@@ -1,0 +1,136 @@
+---
+---
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <div class="logo">PLANE</div>
+      <p class="tagline">
+        Arquitectura contemporánea con base en Barcelona. Proyectamos el futuro desde el rigor y la innovación.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h5 class="footer-title">Menu</h5>
+      <ul class="footer-links">
+        <li><a href="/">INICIO</a></li>
+        <li><a href="/nosotros">NOSOTROS</a></li>
+        <li><a href="/proyectos">PROYECTOS</a></li>
+        <li><a href="/contacto">CONTACTO</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h5 class="footer-title">Legal</h5>
+      <ul class="footer-links">
+        <li><a href="#">PRIVACY POLICY</a></li>
+        <li><a href="#">TERMS OF SERVICE</a></li>
+        <li><a href="#">INSTAGRAM</a></li>
+        <li><a href="#">LINKEDIN</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 PLANE ARCHITECTURE STUDIO. ALL RIGHTS RESERVED.</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-on-background);
+    color: var(--color-surface-bright);
+    padding: 80px var(--spacing-margin-desktop) 32px;
+    width: 100%;
+  }
+
+  .footer-container {
+    max-width: var(--spacing-container-max);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--spacing-gutter);
+  }
+
+  .footer-brand {
+    max-width: 320px;
+  }
+
+  .logo {
+    font-family: var(--font-heading);
+    font-size: var(--text-headline-lg);
+    font-weight: 700;
+    color: var(--color-surface-bright);
+    margin-bottom: 32px;
+  }
+
+  .tagline {
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-surface-dim);
+    line-height: 1.5;
+  }
+
+  .footer-title {
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-primary);
+    margin-bottom: 24px;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footer-links a {
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-surface-dim);
+    text-decoration: underline;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--color-primary);
+  }
+
+  .footer-bottom {
+    max-width: var(--spacing-container-max);
+    margin: 80px auto 0;
+    padding-top: 32px;
+    border-top: 1px solid var(--color-outline);
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-surface-dim);
+  }
+
+  @media (max-width: 768px) {
+    .footer {
+      padding: 80px var(--spacing-margin-mobile) 32px;
+    }
+
+    .footer-container {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .footer-brand {
+      max-width: 100%;
+    }
+  }
+</style>

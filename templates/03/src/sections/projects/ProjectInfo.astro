@@ -1,0 +1,149 @@
+---
+interface Props {
+  category: string;
+  title: string;
+  description: string;
+  location: string;
+  area: string;
+  status: string;
+  year: string;
+}
+
+const { category, title, description, location, area, status, year } = Astro.props;
+---
+
+<section class="project-info">
+  <div class="info-container">
+    <div class="info-main">
+      <span class="category">{category}</span>
+      <h1 class="title">{title}</h1>
+      <p class="description">{description}</p>
+    </div>
+
+    <div class="info-sidebar">
+      <div class="info-box">
+        <div class="info-row">
+          <span class="label">Location</span>
+          <span class="value">{location}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Area</span>
+          <span class="value">{area}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Status</span>
+          <span class="value status">{status}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Year</span>
+          <span class="value">{year}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .project-info {
+    padding: 64px var(--spacing-margin-desktop);
+    border-bottom: 1px solid #e5e5e5;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--spacing-gutter);
+  }
+
+  .info-container {
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--spacing-gutter);
+  }
+
+  .info-main {
+    grid-column: span 8;
+  }
+
+  .category {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    margin-bottom: 16px;
+  }
+
+  .title {
+    font-size: var(--text-headline-xl);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .description {
+    font-size: var(--text-body-lg);
+    color: var(--color-secondary);
+    max-width: 480px;
+    margin-top: 16px;
+  }
+
+  .info-sidebar {
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .info-box {
+    padding: 32px;
+    border: 1px solid var(--color-outline-variant);
+    background: white;
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .info-row:last-child {
+    border-bottom: none;
+  }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    text-transform: uppercase;
+    color: var(--color-secondary);
+  }
+
+  .value {
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    text-transform: uppercase;
+  }
+
+  .value.status {
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .project-info {
+      padding: 48px var(--spacing-margin-mobile);
+    }
+
+    .info-container {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .info-main {
+      grid-column: span 12;
+    }
+
+    .info-sidebar {
+      grid-column: span 12;
+    }
+  }
+</style>

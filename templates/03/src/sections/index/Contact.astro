@@ -1,0 +1,165 @@
+---
+---
+
+<section class="contact">
+  <div class="contact-container">
+    <div class="contact-info">
+      <h2 class="contact-title">Hablemos de su próximo proyecto.</h2>
+
+      <div class="info-list">
+        <div class="info-item">
+          <p class="info-label">Ubicación</p>
+          <p class="info-value">Calle de la Estructura 45,<br />Barcelona, España</p>
+        </div>
+
+        <div class="info-item">
+          <p class="info-label">Contacto</p>
+          <p class="info-value">hello@plane-arch.com<br />+34 932 456 789</p>
+        </div>
+
+        <div class="social-links">
+          <a href="#">Instagram</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-group">
+        <label for="name">Nombre Completo</label>
+        <input type="text" id="name" placeholder="Su nombre aquí" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Corporativo</label>
+        <input type="email" id="email" placeholder="email@empresa.com" />
+      </div>
+
+      <div class="form-group">
+        <label for="message">Mensaje</label>
+        <textarea id="message" rows="4" placeholder="Cuéntenos sobre sus necesidades..."></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">ENVIAR SOLICITUD</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding: 128px var(--spacing-margin-desktop);
+    background-color: var(--color-surface-container-low);
+  }
+
+  .contact-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 128px;
+  }
+
+  .contact-title {
+    font-size: var(--text-headline-xl);
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+
+  .info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .info-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+  }
+
+  .info-value {
+    font-size: var(--text-body-lg);
+    color: var(--color-on-surface);
+  }
+
+  .social-links {
+    display: flex;
+    gap: 16px;
+    padding-top: 16px;
+  }
+
+  .social-links a {
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    text-transform: uppercase;
+    text-decoration: underline;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .form-group label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    text-transform: uppercase;
+    color: var(--color-on-surface-variant);
+    margin-bottom: 16px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    background-color: var(--color-surface);
+    border: none;
+    border-bottom: 2px solid var(--color-outline);
+    padding: 16px 0;
+    font-size: var(--text-body-lg);
+    transition: border-color 0.3s ease;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-bottom-color: var(--color-primary);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: var(--color-on-surface-variant);
+  }
+
+  .submit-btn {
+    width: 100%;
+    background-color: var(--color-on-background);
+    color: var(--color-surface);
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 24px;
+    transition: background-color 0.3s ease;
+  }
+
+  .submit-btn:hover {
+    background-color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .contact {
+      padding: 80px var(--spacing-margin-mobile);
+    }
+
+    .contact-container {
+      grid-template-columns: 1fr;
+      gap: 64px;
+    }
+
+    .contact-title {
+      font-size: 48px;
+    }
+  }
+</style>

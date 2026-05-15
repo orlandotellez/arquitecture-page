@@ -1,0 +1,141 @@
+---
+interface GalleryImage {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  images: GalleryImage[];
+}
+
+const { images } = Astro.props;
+---
+
+<section class="gallery">
+  <div class="gallery-container">
+    <!-- Full Width Image -->
+    {images[0] && (
+      <div class="gallery-full">
+        <img src={images[0].src} alt={images[0].alt} />
+      </div>
+    )}
+
+    <!-- 7/5 Split -->
+    <div class="gallery-split-7-5">
+      {images[1] && (
+        <div class="gallery-7">
+          <img src={images[1].src} alt={images[1].alt} />
+        </div>
+      )}
+      {images[2] && (
+        <div class="gallery-5">
+          <img src={images[2].src} alt={images[2].alt} />
+        </div>
+      )}
+    </div>
+
+    <!-- 4/4/4 Split -->
+    <div class="gallery-split-4">
+      {images[3] && (
+        <img src={images[3].src} alt={images[3].alt} />
+      )}
+      {images[4] && (
+        <img src={images[4].src} alt={images[4].alt} />
+      )}
+      {images[5] && (
+        <img src={images[5].src} alt={images[5].alt} />
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .gallery {
+    padding: 80px var(--spacing-margin-desktop);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gutter);
+  }
+
+  .gallery-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gutter);
+  }
+
+  .gallery-full {
+    width: 100%;
+    height: 819px;
+    overflow: hidden;
+  }
+
+  .gallery-full img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .gallery-split-7-5 {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    height: 614px;
+    gap: var(--spacing-gutter);
+  }
+
+  .gallery-7,
+  .gallery-5 {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .gallery-7 img,
+  .gallery-5 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .gallery-split-4 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 409px;
+    gap: var(--spacing-gutter);
+  }
+
+  .gallery-split-4 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .gallery {
+      padding: 48px var(--spacing-margin-mobile);
+    }
+
+    .gallery-full {
+      height: 400px;
+    }
+
+    .gallery-split-7-5 {
+      display: flex;
+      flex-direction: column;
+      height: auto;
+    }
+
+    .gallery-7,
+    .gallery-5 {
+      height: 300px;
+    }
+
+    .gallery-split-4 {
+      display: flex;
+      flex-direction: column;
+      height: auto;
+    }
+
+    .gallery-split-4 img {
+      height: 300px;
+    }
+  }
+</style>

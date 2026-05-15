@@ -1,0 +1,122 @@
+---
+const services = [
+  { number: '01', title: 'Arquitectura' },
+  { number: '02', title: 'Diseño de Interiores' },
+  { number: '03', title: 'Urbanismo' },
+  { number: '04', title: 'Consultoría Técnica' },
+];
+---
+
+<section class="services">
+  <div class="services-header">
+    <h2 class="section-title">Nuestros Servicios</h2>
+    <span class="section-label">03 — CAPACIDADES</span>
+  </div>
+
+  <div class="services-list">
+    {services.map((service) => (
+      <div class="service-item">
+        <div class="service-content">
+          <span class="service-number">{service.number}</span>
+          <h3 class="service-title">{service.title}</h3>
+        </div>
+        <span class="material-symbols-outlined service-icon">add</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .services {
+    padding: 128px var(--spacing-margin-desktop);
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-outline-variant);
+  }
+
+  .services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 64px;
+  }
+
+  .section-title {
+    font-size: var(--text-headline-lg);
+    text-transform: uppercase;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-on-surface-variant);
+    margin-bottom: 8px;
+  }
+
+  .services-list {
+    border-top: 2px solid var(--color-on-background);
+  }
+
+  .service-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 16px;
+    border-bottom: 1px solid var(--color-outline-variant);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .service-item:hover {
+    background-color: var(--color-surface-container);
+  }
+
+  .service-content {
+    display: flex;
+    align-items: baseline;
+    gap: 48px;
+  }
+
+  .service-number {
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    color: var(--color-primary);
+  }
+
+  .service-title {
+    font-size: var(--text-headline-lg);
+    text-transform: uppercase;
+  }
+
+  .service-icon {
+    font-size: 48px;
+    color: var(--color-on-surface);
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .service-item:hover .service-icon {
+    color: var(--color-primary);
+    transform: rotate(45deg);
+  }
+
+  @media (max-width: 768px) {
+    .services {
+      padding: 80px var(--spacing-margin-mobile);
+    }
+
+    .services-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .service-content {
+      gap: 24px;
+    }
+
+    .service-title {
+      font-size: var(--text-headline-lg-mobile);
+    }
+  }
+</style>

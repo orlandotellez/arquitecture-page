@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../sections/index/Hero.astro';
+import Stats from '../sections/index/Stats.astro';
+import FeaturedWork from '../sections/index/FeaturedWork.astro';
+import About from '../sections/index/About.astro';
+import Team from '../sections/index/Team.astro';
+import Services from '../sections/index/Services.astro';
+import Contact from '../sections/index/Contact.astro';
+---
+
+<Layout title="Inicio">
+  <Header currentPage="inicio" />
+
+  <main>
+    <div id="hero">
+      <Hero />
+    </div>
+    <Stats />
+    <div id="proyectos">
+      <FeaturedWork />
+    </div>
+    <div id="nosotros">
+      <About />
+      <Team />
+    </div>
+    <div id="servicios">
+      <Services />
+    </div>
+    <div id="contacto">
+      <Contact />
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

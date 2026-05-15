@@ -1,0 +1,132 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const projects = [
+  {
+    slug: 'casa-bosque',
+    title: 'CASA BOSQUE',
+    category: 'Residencial / 2023',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBdKN8p-gm7nRC3iBnTZUD60wyPoPlinxKr98v7LSY6191vWa_JboPzuQbLc7fKTpAhC-I0a1EhlE4RzbFjLne8BzHTj2s90iRCsOaryvUBqGorY3BkQVHGJnjB4uhAo-53jok4gpMEIaNv93DuAk7WiVFYAWgeYC7cfCJh1asPYJleE5UA4EvegIAdsANO0JY9gsqwYhMs7ybkXVRIdQRMxvn_gTh-Ao5i229wz1ZZQGXyjmQ2Oq5tLeUe4XypQYOm3RQ48HybHMY'
+  },
+  {
+    slug: 'casa-mirador',
+    title: 'CASA MIRADOR',
+    category: 'Residencial / 2023',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBn4W05OW8ITD8jTOvb1LMHgC-B7k6XlPguFw2hXtb0wVP4yYdR7D75ypaay7RnWLEBwW_r_qqT4IEs_5pfxgcAO2oFJw9gGNBL8unWhjp6Jl-ShmROq_T5QyV5gbzdfp7Sx2AHg3XBRqY_JNiypMZZtJT13f0yqgflOUb3DFSx0apcxIrp9MvUW4kc0ERDtQV1xDNOK-Q42Gbr1GUjvoggkUmGt3NW6t52G79mR_JE74wp8p330ctG4RTDjRmx74rzes5oXkV_Bo0'
+  },
+  {
+    slug: 'oficinas-axis',
+    title: 'OFICINAS AXIS',
+    category: 'Corporativo / 2022',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCwNfa4wMWS0LC7oKI6TIWWPU1Mk2bYrWtrMXhokiv31pMaHcKOWpivTIu2YHiV7Uf2v5PbePYzUEVgJkf5K5q4oy8_X1TjWSxMETc9sRi7L0mYDaejtonclXatgXA_TuL4wZiAfir4qykQeGJAXLJnWWdJi6ngx9079bTNV0sr8us5F0FV02aikyvVqxrXu6Zgcj9MBFaQEKAkTWNlvM3CWx6t0OHVpfiBbcXap6Fx5X9G9K-dO632vOprN1CEydEYIdaWm--d4O8'
+  },
+  {
+    slug: 'refugio-lago',
+    title: 'REFUGIO DEL LAGO',
+    category: 'Residencial / 2021',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAl5QwGE4qG2kNU1_l25DvTU-XAQopvHV6WAgle3m9ng9GLQA3t96W08IoGT2aMVo1BgTRmVSTTrMhUNS63MZfaEp-JLmvfvr3_UIJh7QHdRUB8cuaziJZalNazb5PYtL9CAPDyvBorLZP2Pe6fOZ9uyTwAmatTxPS-uBcGUe1CpRyl5G7DbdKnNS0UAxNBiyYwd7WrnB1yN9I9y5htoeDApfhfZiADGR3Sc9-AhKqvChOl7Wvoid3PdTSz54X2SZjEraByRehQRzU'
+  }
+];
+---
+
+<Layout title="Proyectos">
+  <Header currentPage="proyectos" />
+
+  <main class="projects-page">
+    <section class="projects-hero">
+      <h1>Proyectos</h1>
+    </section>
+
+    <section class="projects-grid">
+      {projects.map((project) => (
+        <a href={`/proyectos/${project.slug}`} class="project-card">
+          <div class="project-image">
+            <img src={project.image} alt={project.title} />
+          </div>
+          <div class="project-info">
+            <span class="project-category">{project.category}</span>
+            <h2 class="project-title">{project.title}</h2>
+          </div>
+        </a>
+      ))}
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .projects-page {
+    padding-top: 80px;
+  }
+
+  .projects-hero {
+    padding: 80px var(--spacing-margin-desktop);
+    border-bottom: 1px solid var(--color-outline-variant);
+  }
+
+  .projects-hero h1 {
+    font-size: var(--text-headline-xl);
+    text-transform: uppercase;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-gutter);
+    padding: var(--spacing-gutter);
+  }
+
+  .project-card {
+    display: block;
+    cursor: pointer;
+  }
+
+  .project-image {
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    margin-bottom: 24px;
+  }
+
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+
+  .project-card:hover .project-image img {
+    transform: scale(1.05);
+  }
+
+  .project-category {
+    font-family: var(--font-mono);
+    font-size: var(--text-label-mono);
+    text-transform: uppercase;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .project-title {
+    font-size: var(--text-headline-md);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    .projects-hero {
+      padding: 60px var(--spacing-margin-mobile);
+    }
+
+    .projects-hero h1 {
+      font-size: 48px;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+      padding: var(--spacing-margin-mobile);
+    }
+  }
+</style>
