@@ -1,0 +1,19 @@
+{
+  "name": "receptive-ring",
+  "version": "0.0.1",
+  "type": "module",
+  "dependencies": {
+    "@astrojs/node": "^10.1.1",
+    "@lucide/astro": "^1.16.0",
+    "astro": "^6.3.3"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  }
+}

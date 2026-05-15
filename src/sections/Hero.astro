@@ -1,0 +1,152 @@
+---
+interface Props {
+  templateCount: number;
+}
+
+const { templateCount } = Astro.props;
+---
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      <span>{templateCount} plantillas</span>
+    </div>
+
+    <h1 class="hero-title">
+      <span class="title-line">Mis plantillas de</span>
+      <span class="title-accent">arquitectura</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      Una colección de proyectos de arquitectura que fui armando.
+      Cada uno con su estilo propio, listo para usar o inspiration.
+    </p>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-value">{templateCount}</div>
+        <div class="stat-label">Proyectos</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-value">Astro</div>
+        <div class="stat-label">Stack</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-value">100%</div>
+        <div class="stat-label">CSS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 80px 24px 64px;
+  }
+
+  .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    font-size: 14px;
+    color: var(--color-coffee-300);
+    margin-bottom: 32px;
+  }
+
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-amber-400);
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  @media (min-width: 768px) {
+    .hero-title {
+      font-size: 56px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-title {
+      font-size: 64px;
+    }
+  }
+
+  .title-line {
+    display: block;
+    color: var(--color-text);
+  }
+
+  .title-accent {
+    display: block;
+    background: linear-gradient(90deg, var(--color-coffee-300), var(--color-amber-400), var(--color-orange-400));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto 48px;
+  }
+
+  .hero-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: var(--color-text-dim);
+    margin-top: 4px;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 48px;
+    background: var(--color-border);
+  }
+</style>

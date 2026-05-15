@@ -1,0 +1,238 @@
+---
+import { House, Target, Layout, Building, Box } from '@lucide/astro';
+
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  color: string;
+  badge: string | null;
+  index: number;
+  href: string;
+}
+
+const { title, description, icon, color, badge, index, href } = Astro.props;
+
+// Mapear nombres de iconos a componentes
+const icons: Record<string, any> = {
+  house: House,
+  target: Target,
+  layout: Layout,
+  building: Building,
+  box: Box
+};
+
+const IconComponent = icons[icon] || Box;
+---
+
+<a href={href} target="_blank" rel="noopener noreferrer" class="card" style={`animation-delay: ${index * 100}ms`}>
+  <div class={`card-bg ${color}`}></div>
+  <div class="card-glow"></div>
+
+  <div class="card-content">
+    <div class="card-header">
+      <div class={`card-icon ${color}`}>
+        <IconComponent size={24} />
+      </div>
+      <div class="card-meta">
+        <span class="card-number">#{String(index + 1).padStart(2, '0')}</span>
+        {badge && <span class="card-badge">{badge}</span>}
+      </div>
+    </div>
+
+    <h3 class="card-title">{title}</h3>
+    <p class="card-description">{description}</p>
+
+    <div class="card-footer">
+      <span class="card-link">
+        Ver plantilla
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </span>
+      <span class="card-hint">Click para explorar</span>
+    </div>
+  </div>
+
+  <div class="card-decor"></div>
+</a>
+
+<style>
+  .card {
+    position: relative;
+    display: block;
+    border-radius: var(--radius-xl);
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    transition: var(--transition);
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .card:hover {
+    border-color: rgba(251, 191, 36, 0.3);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .card-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .card:hover .card-bg {
+    opacity: 0.1;
+  }
+
+  .card-bg.from-coffee-400-to-coffee-600 {
+    background: linear-gradient(135deg, #d4a574, #b8855a);
+  }
+
+  .card-bg.from-coffee-500-to-amber-600 {
+    background: linear-gradient(135deg, #b8855a, #d97706);
+  }
+
+  .card-glow {
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(90deg, transparent, rgba(184, 133, 90, 0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    border-radius: var(--radius-xl);
+    filter: blur(20px);
+  }
+
+  .card:hover .card-glow {
+    opacity: 1;
+  }
+
+  .card-content {
+    position: relative;
+    padding: 32px;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .card-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .card-icon.from-coffee-400-to-coffee-600 {
+    background: linear-gradient(135deg, #d4a574, #c9956c);
+  }
+
+  .card-icon.from-coffee-500-to-amber-600 {
+    background: linear-gradient(135deg, #b8855a, #d97706);
+  }
+
+  .card-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+
+  .card-number {
+    font-size: 12px;
+    font-family: monospace;
+    color: var(--color-text-dim);
+  }
+
+  .card-badge {
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 20px;
+    background: rgba(184, 133, 90, 0.2);
+    color: var(--color-coffee-300);
+  }
+
+  .card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+  }
+
+  .card:hover .card-title {
+    color: var(--color-coffee-300);
+  }
+
+  .card-description {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-coffee-400);
+    transition: var(--transition);
+  }
+
+  .card-link svg {
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover .card-link {
+    color: var(--color-coffee-300);
+  }
+
+  .card:hover .card-link svg {
+    transform: translateX(4px);
+  }
+
+  .card-hint {
+    font-size: 12px;
+    color: var(--color-text-dim);
+  }
+
+  .card-decor {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 128px;
+    height: 128px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent);
+    border-radius: 0 0 0 100%;
+    pointer-events: none;
+  }
+</style>

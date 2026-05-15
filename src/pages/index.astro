@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../sections/Hero.astro';
+import Features from '../sections/Features.astro';
+import TemplatesGrid from '../sections/TemplatesGrid.astro';
+
+const templates = [
+  {
+    title: 'Template 01',
+    description: 'Plantilla base para proyectos modernos',
+    icon: 'house',
+    color: 'from-coffee-400-to-coffee-600',
+    badge: 'Popular',
+    url: 'https://arquitecture-page-an32.vercel.app/'
+  }
+];
+---
+
+<Layout>
+  <Header />
+
+  <main>
+    <Hero templateCount={templates.length} />
+    <TemplatesGrid templates={templates} />
+    <Features />
+  </main>
+
+  <Footer />
+</Layout>

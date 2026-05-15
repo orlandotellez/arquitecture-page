@@ -1,0 +1,132 @@
+---
+import TemplateCard from '../components/TemplateCard.astro';
+
+interface Template {
+  title: string;
+  description: string;
+  icon: string;
+  color: string;
+  badge: string | null;
+  url: string;
+}
+
+interface Props {
+  templates: Template[];
+}
+
+const { templates } = Astro.props;
+---
+
+<section class="templates-section">
+  <div class="templates-inner">
+    {templates.length > 0 ? (
+      <div class="templates-grid">
+        {templates.map((template, index) => (
+          <TemplateCard
+            title={template.title}
+            description={template.description}
+            icon={template.icon}
+            color={template.color}
+            badge={template.badge}
+            index={index}
+            href={template.url}
+          />
+        ))}
+      </div>
+    ) : (
+      <div class="empty-state">
+        <div class="empty-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+          </svg>
+        </div>
+        <h2 class="empty-title">No hay plantillas disponibles</h2>
+        <p class="empty-description">
+          Agrega carpetas en el directorio <code class="empty-code">templates/</code> para comenzar
+        </p>
+        <button class="empty-button">Crear Primera Plantilla</button>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .templates-section {
+    padding: 0 24px 80px;
+  }
+
+  .templates-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .templates-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  @media (min-width: 768px) {
+    .templates-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .templates-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 80px 0;
+  }
+
+  .empty-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 24px;
+    background: var(--color-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    color: var(--color-text-dim);
+  }
+
+  .empty-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 12px;
+  }
+
+  .empty-description {
+    font-size: 16px;
+    color: var(--color-text-muted);
+    margin-bottom: 24px;
+  }
+
+  .empty-code {
+    padding: 4px 8px;
+    background: var(--color-card);
+    border-radius: 6px;
+    color: var(--color-coffee-300);
+    font-family: monospace;
+  }
+
+  .empty-button {
+    padding: 12px 24px;
+    background: var(--color-coffee-500);
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: var(--transition);
+  }
+
+  .empty-button:hover {
+    background: var(--color-coffee-400);
+  }
+</style>
