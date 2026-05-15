@@ -1,43 +1,37 @@
-# Astro Starter Kit: Minimal
+# Arquitectura Page
 
-```sh
-bun create astro@latest -- --template minimal
+Galería personal de mis plantillas de arquitectura, hecha con Astro.
+
+## Estructura
+
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 /
-├── public/
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/    # Componentes reutilizables
+│   ├── layouts/       # Layouts base
+│   ├── sections/      # Secciones de página
+│   ├── styles/        # CSS global
+│   └── pages/         # Páginas del sitio
+├── templates/         # Plantillas individuales
+│   └── 01/           # Template 01 (despliegue independiente)
+└── public/           # Assets estáticos
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Comandos
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+| Comando | Acción |
+|---------|--------|
+| `bun install` | Instala dependencias |
+| `bun dev` | Inicia servidor en desarrollo |
+| `bun build` | Genera build de producción |
+| `bun preview` | Previsualiza el build |
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Cómo agregar una plantilla
 
-## 🧞 Commands
+1. Agregar la plantilla en `templates/`
+2. Agregar la URL de despliegue en `src/pages/index.astro`
+3. Desplegar la plantilla en Vercel (u otro provider)
 
-All commands are run from the root of the project, from a terminal:
+## Despliegues
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Cada plantilla en `templates/` se despliega de forma independiente.
