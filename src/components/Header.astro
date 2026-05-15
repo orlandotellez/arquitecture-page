@@ -1,13 +1,13 @@
 ---
 ---
 
-<header class="site-header">
+<header class="site-header" id="siteHeader">
   <div class="container">
     <a href="/" class="logo">
       <h1>ARCHISTUDIO</h1>
     </a>
 
-    <nav>
+    <nav class="nav-desktop">
       <ul>
         <li><a href="/">Inicio</a></li>
         <li><a href="/sobre-nosotros">Sobre nosotros</a></li>
@@ -17,9 +17,62 @@
       </ul>
     </nav>
 
-    <a href="/contacto" class="cta-btn">Contactar ya</a>
+    <a href="/contacto" class="cta-btn desktop-only">Contactar ya</a>
+
+    <button class="hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
   </div>
 </header>
+
+<div class="mobile-menu-overlay"></div>
+<nav class="mobile-nav">
+  <ul>
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/sobre-nosotros">Sobre nosotros</a></li>
+    <li><a href="/proyectos">Proyectos</a></li>
+    <li><a href="/servicios">Servicios</a></li>
+    <li><a href="/contacto">Contacto</a></li>
+  </ul>
+  <a href="/contacto" class="cta-btn mobile-only">Contactar ya</a>
+</nav>
+
+<script>
+  const hamburger = document.querySelector('.hamburger') as HTMLButtonElement | null;
+  const mobileMenu = document.querySelector('.mobile-nav') as HTMLElement | null;
+  const overlay = document.querySelector('.mobile-menu-overlay') as HTMLElement | null;
+
+  const header = document.getElementById('siteHeader');
+
+  if (!hamburger || !mobileMenu || !overlay) {
+    console.error('Header elements not found');
+  } else {
+    function toggleMenu() {
+      const isActive = hamburger.classList.contains('active');
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.classList.toggle('menu-open');
+      hamburger.setAttribute('aria-expanded', (!isActive).toString());
+
+      // Keep header above mobile menu
+      if (header) {
+        header.style.zIndex = isActive ? '1000' : '2000';
+      }
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+
+    document.querySelectorAll('.mobile-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggleMenu();
+      });
+    });
+  }
+</script>
 
 <style>
   .site-header {
@@ -124,27 +177,134 @@
     background: linear-gradient(135deg, var(--color-accent-light), var(--color-accent));
   }
 
+  /* Hamburger button - always visible on mobile */
+  .hamburger {
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    .nav-desktop {
+      display: none;
+    }
+
+    .desktop-only {
+      display: none;
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 32px;
+      height: 32px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 2000;
+    }
+
+    .hamburger-line {
+      width: 24px;
+      height: 2px;
+      background-color: #000;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .hamburger.active .hamburger-line:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.active .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .hamburger-line:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+
+    .mobile-menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background-color: var(--color-white);
+      padding: 100px 32px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: right 0.3s ease;
+      z-index: 1000;
+      box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-nav.active {
+      right: 0;
+    }
+
+    .mobile-nav ul {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .mobile-nav ul a {
+      font-family: 'Inter Variable', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--color-text-dark);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .mobile-nav ul a:hover {
+      color: var(--color-accent);
+    }
+
+    .mobile-only {
+      display: inline-flex;
+      text-align: center;
+      justify-content: center;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+  }
+
   @media (max-width: 768px) {
     .site-header {
       padding: 0 20px;
       height: 64px;
     }
 
-    ul {
-      gap: 16px;
-    }
-
-    ul a {
-      font-size: 0.8rem;
-    }
-
     .logo h1 {
       font-size: 1.3rem;
-    }
-
-    .cta-btn {
-      font-size: 0.78rem;
-      padding: 8px 16px;
     }
   }
 </style>
