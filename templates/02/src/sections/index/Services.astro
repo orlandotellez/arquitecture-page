@@ -1,0 +1,166 @@
+---
+import SectionContainer from '../../components/SectionContainer.astro'
+---
+
+<section class="services" id="servicios">
+  <SectionContainer>
+    <div class="services-header">
+      <span class="services-label">NUESTRO ALCANCE</span>
+      <h2 class="services-title">Servicios integrales para visiones ambiciosas.</h2>
+    </div>
+  </SectionContainer>
+  <div class="services-list">
+    <SectionContainer>
+      <!-- Service 1 -->
+      <div class="service-item">
+        <div class="service-left">
+          <span class="service-number">01</span>
+          <h3 class="service-name">Diseño Arquitectónico</h3>
+        </div>
+        <div class="service-right">
+          <ul class="service-items">
+            <li>• Conceptualización</li>
+            <li>• Planos Ejecutivos</li>
+            <li>• Modelado BIM</li>
+            <li>• Análisis de Sitio</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Service 2 -->
+      <div class="service-item">
+        <div class="service-left">
+          <span class="service-number">02</span>
+          <h3 class="service-name">Interiorismo de Lujo</h3>
+        </div>
+        <div class="service-right">
+          <ul class="service-items">
+            <li>• Curaduría de Mobiliario</li>
+            <li>• Diseño de Iluminación</li>
+            <li>• Selección de Materiales</li>
+            <li>• Arte a Medida</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Service 3 -->
+      <div class="service-item">
+        <div class="service-left">
+          <span class="service-number">03</span>
+          <h3 class="service-name">Gestión de Proyecto</h3>
+        </div>
+        <div class="service-right">
+          <ul class="service-items">
+            <li>• Supervisión de Obra</li>
+            <li>• Control de Presupuesto</li>
+            <li>• Licitaciones</li>
+            <li>• Cronogramas Críticos</li>
+          </ul>
+        </div>
+      </div>
+    </SectionContainer>
+  </div>
+</section>
+
+<style>
+  .services {
+    padding-top: 160px;
+    padding-bottom: 160px;
+  }
+
+  .services-header {
+    margin-bottom: 96px;
+  }
+
+  .services-label {
+    font-family: var(--font-technical-data);
+    font-size: 12px;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .services-title {
+    font-family: var(--font-headline-md);
+    font-size: 42px;
+    line-height: 48px;
+    max-width: 720px;
+  }
+
+  .services-list {
+    border-top: 1px solid rgba(77, 70, 60, 0.3);
+  }
+
+  .service-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 64px 0;
+    border-bottom: 1px solid rgba(77, 70, 60, 0.3);
+    transition: background-color 0.5s ease;
+  }
+
+  @media (min-width: 769px) {
+    .service-item {
+      flex-direction: row;
+      padding: 64px 0;
+    }
+  }
+
+  .service-item:hover {
+    background-color: var(--color-surface-container-low);
+  }
+
+  .service-left {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    width: 100%;
+    margin-bottom: 32px;
+  }
+
+  @media (min-width: 769px) {
+    .service-left {
+      width: 50%;
+      margin-bottom: 0;
+    }
+  }
+
+  .service-number {
+    font-family: var(--font-technical-data);
+    font-size: 48px;
+    color: var(--color-primary);
+    opacity: 0.2;
+    transition: opacity 0.3s ease;
+  }
+
+  .service-item:hover .service-number {
+    opacity: 1;
+  }
+
+  .service-name {
+    font-family: var(--font-headline-sm);
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .service-right {
+    width: 100%;
+  }
+
+  @media (min-width: 769px) {
+    .service-right {
+      width: 50%;
+    }
+  }
+
+  .service-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .service-items li {
+    font-family: var(--font-technical-data);
+    font-size: 12px;
+    color: var(--color-on-surface-variant);
+  }
+</style>

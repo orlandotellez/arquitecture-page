@@ -1,0 +1,244 @@
+---
+import SectionContainer from '../../components/SectionContainer.astro'
+---
+
+<section class="hero" id="inicio">
+  <div class="hero-layout">
+    <div class="hero-image">
+      <img 
+        alt="Minimalist Architecture" 
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQGr_mH0OHxB0QtGqikupHKuCdNeScrgDwhE3BbFZ2dWRpJx6xlAvfZ_4SPYOfq39t20wycSVAILiimruXurg_UDpr-V1wqKzkxsqIUSEGLH6LoYCnvv6n8TW26VmtlZuTOVRTlQP-rIQel1CThxUvMob_pnWEb7QWgBz_jmymEUrdu9UYl7Lbx3XPT56InSTyH5ZY5fc1s_AGKpKd44TJBQOB4ETp5CzO1ZVEmo3KThAgRSqHhyTRt85N9ry9GeoQ8k-dSQKZ4cl_" 
+      />
+    </div>
+    <div class="hero-content">
+      <SectionContainer>
+        <div class="hero-text">
+          <h1 class="hero-title">
+            <span>Espacios que</span>
+            <span class="hero-title-indent">hablan sin</span>
+            <span class="hero-title-small-indent">palabras</span>
+          </h1>
+          <p class="hero-description">
+            En FORMA, entendemos la arquitectura como una narrativa silenciosa. Cada línea y cada material está imbuido de una intención trascendental que eleva la experiencia humana cotidiana.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#proyectos">VER PROYECTOS</a>
+            <a class="link-text" href="#nosotros">CONOCER EL ESTUDIO</a>
+          </div>
+        </div>
+      </SectionContainer>
+    </div>
+  </div>
+</section>
+
+<!-- Hero Stats - Separated section like ProjectInfo -->
+<section class="hero-stats">
+  <div class="stat-item">
+    <span class="stat-label">AÑOS</span>
+    <span class="stat-value">15+</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-label">PROYECTOS</span>
+    <span class="stat-value">80+</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-label">PREMIOS</span>
+    <span class="stat-value">12</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-label">PAÍSES</span>
+    <span class="stat-value">4</span>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+  }
+
+  .hero-layout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (min-width: 769px) {
+    .hero-layout {
+      flex-direction: row;
+      margin: auto;
+    }
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  @media (min-width: 769px) {
+    .hero-image {
+      width: 50%;
+      height: 80vh;
+    }
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) brightness(50%) contrast(125%);
+  }
+
+  .hero-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 48px 0;
+    background-color: var(--color-background);
+  }
+
+  @media (min-width: 769px) {
+    .hero-content {
+      width: 45%;
+    }
+  }
+
+  .hero-text {
+    max-width: 400px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 48px;
+    line-height: 1.1;
+    color: var(--color-on-surface);
+    margin-bottom: 32px;
+  }
+
+  @media (min-width: 769px) {
+    .hero-title {
+      font-size: 64px;
+    }
+  }
+
+  .hero-title span {
+    display: block;
+  }
+
+  .hero-title-indent {
+    margin-left: 12%;
+  }
+
+  .hero-title-small-indent {
+    margin-left: 4%;
+  }
+
+  .hero-description {
+    font-family: var(--font-body-lg);
+    font-size: 16px;
+    line-height: 26px;
+    color: var(--color-on-surface-variant);
+    margin-bottom: 40px;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-gutter);
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 12px 32px;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    font-family: var(--font-label-caps);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    transition: all 0.3s ease;
+  }
+
+  .btn:hover {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+  }
+
+  .link-text {
+    font-family: var(--font-label-caps);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    color: var(--color-on-surface);
+    position: relative;
+  }
+
+  .link-text::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease-in-out;
+  }
+
+  .link-text:hover::after {
+    width: 100%;
+  }
+
+  /* Hero Stats - Same as ProjectInfo */
+  .hero-stats {
+    width: 100%;
+    background-color: var(--color-surface-container-low);
+    border-top: 1px solid rgba(77, 70, 60, 0.3);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: 769px) {
+    .hero-stats {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .stat-item {
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-left: 1px solid rgba(77, 70, 60, 0.3);
+  }
+
+  @media (min-width: 769px) {
+    .stat-item {
+      padding: 40px 24px;
+    }
+  }
+
+  .stat-label {
+    font-family: var(--font-label-caps);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--color-on-surface-variant);
+  }
+
+  .stat-value {
+    font-family: var(--font-body-md);
+    font-size: 20px;
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .hero-actions {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

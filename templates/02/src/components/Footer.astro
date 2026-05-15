@@ -1,0 +1,149 @@
+---
+---
+
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-logo">FORMA</div>
+      <div class="footer-links">
+        <a class="footer-link" href="#proyectos">PROYECTOS</a>
+        <a class="footer-link" href="#nosotros">FILOSOFÍA</a>
+        <a class="footer-link" href="#nosotros">ESTUDIO</a>
+        <a class="footer-link" href="#contacto">CONTACTO</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2024 FORMA ARQUITECTURA. TODOS LOS DERECHOS RESERVADOS.</p>
+      <div class="footer-legal">
+        <span>PRIVACIDAD</span>
+        <span>TÉRMINOS</span>
+      </div>
+    </div>
+</div>
+</footer>
+
+<style>
+  .main-footer {
+    width: 100%;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-color: var(--color-surface-container-lowest);
+    border-top: 1px solid var(--color-outline-variant);
+  }
+
+  .container {
+    max-width: 1200px;
+  }
+
+  .footer-top {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  @media (min-width: 769px) {
+    .footer-top {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .footer-logo {
+    font-family: var(--font-display-lg);
+    font-size: 84px;
+    line-height: 1;
+    color: var(--color-on-surface);
+    opacity: 0.1;
+    user-select: none;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 48px;
+  }
+
+  @media (min-width: 769px) {
+    .footer-links {
+      flex-direction: row;
+      margin-top: 0;
+    }
+  }
+
+  .footer-link {
+    font-family: var(--font-label-caps);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    color: var(--color-on-surface-variant);
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  .footer-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+  }
+
+  .footer-link:hover {
+    color: var(--color-primary);
+  }
+
+  .footer-link:hover::after {
+    width: 100%;
+  }
+
+  .footer-bottom {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(77, 70, 60, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  @media (min-width: 769px) {
+    .footer-bottom {
+      flex-direction: row;
+    }
+  }
+
+  .footer-copyright {
+    font-family: var(--font-technical-data);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--color-on-surface-variant);
+    opacity: 0.5;
+    text-transform: uppercase;
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: 32px;
+  }
+
+  .footer-legal span {
+    font-family: var(--font-technical-data);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--color-on-surface-variant);
+    opacity: 0.5;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    .footer-logo {
+      font-size: 48px;
+    }
+  }
+</style>

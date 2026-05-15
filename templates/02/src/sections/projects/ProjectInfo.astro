@@ -1,0 +1,76 @@
+---
+interface Props {
+  category: string
+  location: string
+  year: string
+  surface: string
+  client: string
+  status: string
+}
+
+const { category, location, year, surface, client, status } = Astro.props
+---
+
+<section class="project-info">
+  <div class="info-item">
+    <span class="info-label">CATEGORÍA</span>
+    <span class="info-value">{category}</span>
+  </div>
+  <div class="info-item">
+    <span class="info-label">UBICACIÓN</span>
+    <span class="info-value">{location}</span>
+  </div>
+  <div class="info-item">
+    <span class="info-label">AÑO</span>
+    <span class="info-value">{year}</span>
+  </div>
+  <div class="info-item">
+    <span class="info-label">SUPERFICIE</span>
+    <span class="info-value">{surface}</span>
+  </div>
+  <div class="info-item">
+    <span class="info-label">CLIENTE</span>
+    <span class="info-value">{client}</span>
+  </div>
+  <div class="info-item">
+    <span class="info-label">ESTADO</span>
+    <span class="info-value">{status}</span>
+  </div>
+</section>
+
+<style>
+  .project-info {
+    width: 100%;
+    background-color: var(--color-surface-container-low);
+    border-bottom: 1px solid rgba(77, 70, 60, 0.3);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: 769px) {
+    .project-info {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+
+  .info-item {
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-left: 1px solid rgba(77, 70, 60, 0.3);
+  }
+
+  .info-label {
+    font-family: var(--font-label-caps);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--color-on-surface-variant);
+  }
+
+  .info-value {
+    font-family: var(--font-body-md);
+    font-size: 16px;
+    color: var(--color-on-surface);
+  }
+</style>

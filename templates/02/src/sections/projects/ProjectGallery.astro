@@ -1,0 +1,143 @@
+---
+interface GalleryImage {
+  src: string
+  alt: string
+  label: string
+}
+
+interface Props {
+  images: GalleryImage[]
+}
+
+const { images } = Astro.props
+---
+
+<section class="project-gallery">
+  <div class="gallery-grid">
+    <div class="gallery-large">
+      <img src={images[0]?.src || ""} alt="" />
+      <div class="gallery-label">{images[0]?.label || "INT-01 / ESTANCIA PRINCIPAL"}</div>
+    </div>
+    <div class="gallery-side">
+      <div class="gallery-small">
+        <img src={images[1]?.src || ""} alt="" />
+      </div>
+      <div class="gallery-small">
+        <img src={images[2]?.src || ""} alt="" />
+      </div>
+    </div>
+    <div class="gallery-wide">
+      <img src={images[3]?.src || ""} alt="" />
+      <div class="gallery-label-right">{images[3]?.label || "EXT-04 / PANORÁMICA ALBA"}</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .project-gallery {
+    padding: 80px var(--spacing-margin-desktop);ç
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  @media (min-width: 769px) {
+    .gallery-grid {
+      grid-template-columns: 8fr 4fr;
+      max-width: 1200px;
+      margin: auto;
+    }
+  }
+
+  .gallery-large {
+    position: relative;
+    height: 700px;
+    overflow: hidden;
+  }
+
+  .gallery-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+
+  .gallery-large:hover img {
+    transform: scale(1.05);
+  }
+
+  .gallery-label {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    font-family: var(--font-technical-data);
+    font-size: 12px;
+    background-color: rgba(21, 19, 16, 0.5);
+    backdrop-filter: blur(4px);
+    padding: 8px 16px;
+    border: 1px solid rgba(77, 70, 60, 0.3);
+  }
+
+  .gallery-side {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .gallery-small {
+    height: 334px;
+    overflow: hidden;
+    border: 1px solid rgba(77, 70, 60, 0.3);
+  }
+
+  .gallery-small img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+
+  .gallery-small:hover img {
+    transform: scale(1.05);
+  }
+
+  .gallery-wide {
+    grid-column: 1 / -1;
+    position: relative;
+    height: 500px;
+    margin-top: 32px;
+    overflow: hidden;
+  }
+
+  .gallery-wide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+
+  .gallery-wide:hover img {
+    transform: scale(1.05);
+  }
+
+  .gallery-label-right {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-family: var(--font-technical-data);
+    font-size: 12px;
+    background-color: rgba(21, 19, 16, 0.5);
+    backdrop-filter: blur(4px);
+    padding: 8px 16px;
+    border: 1px solid rgba(77, 70, 60, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .project-gallery {
+      padding: 80px var(--spacing-margin-mobile);
+    }
+  }
+</style>

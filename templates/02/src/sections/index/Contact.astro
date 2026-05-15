@@ -1,0 +1,263 @@
+---
+import SectionContainer from '../../components/SectionContainer.astro'
+---
+
+<section class="contact" id="contacto">
+  <SectionContainer>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2 class="contact-title">Hagamos realidad su visión.</h2>
+        <div class="contact-details">
+          <div class="contact-item">
+            <span class="contact-label">UBICACIÓN</span>
+            <p class="contact-text">Paseo de la Reforma 412, CDMX, México</p>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">CONTACTO</span>
+            <p class="contact-text">info@forma-studio.com</p>
+            <p class="contact-text">+52 (55) 8920 4400</p>
+          </div>
+          <div class="contact-social">
+            <a class="social-link" href="#">INSTAGRAM</a>
+            <a class="social-link" href="#">LINKEDIN</a>
+            <a class="social-link" href="#">BEHANCE</a>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form>
+          <div class="form-group">
+            <input type="text" id="name" required placeholder=" " />
+            <label for="name">NOMBRE COMPLETO</label>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" required placeholder=" " />
+            <label for="email">CORREO ELECTRÓNICO</label>
+          </div>
+          <div class="form-group">
+            <span class="form-label">TIPO DE PROYECTO</span>
+            <div class="form-options">
+              <label class="form-option">
+                <input type="radio" name="project" />
+                <span>RESIDENCIAL</span>
+              </label>
+              <label class="form-option">
+                <input type="radio" name="project" />
+                <span>COMERCIAL</span>
+              </label>
+              <label class="form-option">
+                <input type="radio" name="project" />
+                <span>CULTURAL</span>
+              </label>
+              <label class="form-option">
+                <input type="radio" name="project" />
+                <span>INTERIORISMO</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea id="message" rows="3" placeholder=" "></textarea>
+            <label for="message">MENSAJE</label>
+          </div>
+          <button type="submit" class="btn-submit">
+            ENVIAR SOLICITUD
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </SectionContainer>
+</section>
+
+<style>
+  .contact {
+    padding-top: 160px;
+    padding-bottom: 160px;
+    background-color: var(--color-surface-container-low);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-gutter);
+  }
+
+  @media (min-width: 769px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-gutter);
+    }
+  }
+
+  .contact-info {
+    margin-bottom: 64px;
+  }
+
+  @media (min-width: 769px) {
+    .contact-info {
+      margin-bottom: 0;
+    }
+  }
+
+  .contact-title {
+    font-family: var(--font-headline-md);
+    font-size: 42px;
+    line-height: 48px;
+    margin-bottom: 48px;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-label {
+    font-family: var(--font-technical-data);
+    font-size: 12px;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+  }
+
+  .contact-text {
+    font-family: var(--font-body-md);
+    font-size: 16px;
+    color: var(--color-on-surface);
+  }
+
+  .contact-social {
+    margin-top: 32px;
+    display: flex;
+    gap: 24px;
+  }
+
+  .social-link {
+    font-family: var(--font-label-caps);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--color-on-surface);
+    transition: color 0.3s ease;
+  }
+
+  .social-link:hover {
+    color: var(--color-primary);
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .form-group {
+    position: relative;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-outline-variant);
+    padding: 16px 0;
+    color: var(--color-on-surface);
+    font-family: var(--font-body-md);
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-bottom-color: var(--color-primary);
+  }
+
+  .form-group label {
+    position: absolute;
+    top: 16px;
+    left: 0;
+    font-family: var(--font-label-caps);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--color-on-surface-variant);
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+
+  .form-group input:focus + label,
+  .form-group input:not(:placeholder-shown) + label,
+  .form-group textarea:focus + label,
+  .form-group textarea:not(:placeholder-shown) + label {
+    top: -8px;
+    font-size: 10px;
+    color: var(--color-primary);
+  }
+
+  .form-group .form-label {
+    display: block;
+    font-family: var(--font-label-caps);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--color-on-surface-variant);
+    margin-bottom: 16px;
+  }
+
+  .form-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .form-option {
+    cursor: pointer;
+  }
+
+  .form-option input {
+    display: none;
+  }
+
+  .form-option span {
+    display: inline-block;
+    padding: 8px 24px;
+    border: 1px solid var(--color-outline-variant);
+    font-family: var(--font-technical-data);
+    font-size: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .form-option input:checked + span {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    border-color: var(--color-primary);
+  }
+
+  .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 32px;
+    padding: 16px 48px;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    font-family: var(--font-label-caps);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+  }
+
+  .btn-submit:hover {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+  }
+
+  .btn-submit .material-symbols-outlined {
+    font-size: 18px;
+  }
+</style>

@@ -1,0 +1,173 @@
+---
+import SectionContainer from '../../components/SectionContainer.astro'
+---
+
+<section class="projects-page">
+  <div class="projects-page-header">
+    <SectionContainer>
+      <span class="page-label">PORTAFOLIO</span>
+      <h1 class="page-title">Proyectos</h1>
+    </SectionContainer>
+  </div>
+  <div class="projects-page-grid">
+    <SectionContainer>
+      <a href="/proyectos/casa-montana" class="project-card">
+        <img 
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT7WYq7HGdXFvi7in-YXnw94pR7plPambfFvr8PmxWOXyORTiF6nJk3x4-TaY9mmcXci3nPOUqEp1UKl9MUC8duh8ldJdD5UEB1x-fxBC8KFCqXEMBcIMMM98x5qfTjLt3lGnyVjwkyUeuDMuv7by3HbOgGuR_bvIzGfAXws_4342mC6vYoxSu7sd8L4-nelC0lPtXTZ5v29iaEFOe74u1NvcJ8-hyQsuBmlErw5k47aPCR0rDdI5_MUhkxBzS47AU1SQB8c7wvhk6" 
+          alt="Casa Montaña" 
+        />
+        <div class="project-overlay">
+          <span class="project-location">VALLE DE BRAVO</span>
+          <h3 class="project-name">Casa Montaña</h3>
+          <p class="project-desc">La integración absoluta entre el refugio humano y la naturaleza virgen.</p>
+          <div class="project-line"></div>
+        </div>
+      </a>
+      <a href="#" class="project-card project-card-offset">
+        <img 
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7pwidwm-lnCPRKrI3qMieu-4ykEveG5rWbWdb4J-5c4SEujouYu6dgw4Y1d4M9Q0-noFMDYcX6G3UnFOMq7iDLs31M5fmvA70Q-vyyPPDqq1UwB22_fyYdWf3FEO2G2em0VB-QY4BQobyDqbyf9VIr4IrIDVMpgxCk-p1u9AUVKsXeWmOVF06P9PqduMnbKvNPMHukLuP9L12Tflt2rRpLyKjM6Quas5FKKCfTjWlr3GoRIgi0v8SqtJEq_DzLBUDLZCARTxKECMW" 
+          alt="Torre Reforma" 
+        />
+        <div class="project-overlay">
+          <span class="project-location">CIUDAD DE MÉXICO</span>
+          <h3 class="project-name">Torre Reforma</h3>
+          <p class="project-desc">Un monolito de concreto que desafía la sismicidad con elegancia estructural.</p>
+          <div class="project-line"></div>
+        </div>
+      </a>
+      <a href="#" class="project-card">
+        <img 
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7zA0iI0p3mX-YXbVF134Pi8zr-6ngoPiC0OBboZhtneK1dHC4IXpRAjWwW9Stzbko1YAw03DqvzrvCGQkY747BA2UA4D0r4se6E3J_iVlhyE1_aUcv9ZAWYU9HtO-BzPPviqP-wjwaWrXihh4hpIO_FhrbNbk2HOqrpykTWqTioE_5rmsSvsNMRoI6gKTASeC5tdeyqvmYHTljc9bKSp8rq88lWA4e-jIUGFhLzRMbED2YJY-iXZjkNac6atAmC2HqBlcKYG0q1qD" 
+          alt="Museo de Arte" 
+        />
+        <div class="project-overlay">
+          <span class="project-location">MADRID</span>
+          <h3 class="project-name">Museo de Arte</h3>
+          <p class="project-desc">Un laberinto de luz diseñado para el silencio y la contemplación de lo sublime.</p>
+          <div class="project-line"></div>
+        </div>
+      </a>
+      <a href="#" class="project-card project-card-offset">
+        <img 
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBobcCvAyICh1tT2Tpge6rqN8-zqdnhy0uh-1QyKsQQJDlTqZMH6-_pvrLd0omyV6-4I4Ec6TtZJZQtn_QcgefHpV4dLGQ_noeiKbR4Ej3ta0bhBhyYZJGmWCXapwcSCmIzGKPQwqlk143t3ida6PkCSNfFCIeAIWKdFsJkRvkYZAJ9Wn4gIqSadnMlAnZh2aw1eUpVKKTiPb7Ynl4ZclfzpwM6YDloh-fkTlbjB6nuVX1aJveaCNg2sEbZk4tHaUk9yeFLmAoh6M2y" 
+          alt="Casa Terreno" 
+        />
+        <div class="project-overlay">
+          <span class="project-location">QUERÉTARO</span>
+          <h3 class="project-name">Casa Terreno</h3>
+          <p class="project-desc">La arquitectura como extensión del terreno.</p>
+          <div class="project-line"></div>
+        </div>
+      </a>
+    </SectionContainer>
+  </div>
+</section>
+
+<style>
+  .projects-page {
+    padding-top: 160px;
+  }
+
+  .projects-page-header {
+    padding-bottom: 80px;
+  }
+
+  .page-label {
+    font-family: var(--font-technical-data);
+    font-size: 12px;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .page-title {
+    font-family: var(--font-headline-md);
+    font-size: 42px;
+    line-height: 48px;
+  }
+
+  .projects-page-grid {
+    width: 100%;
+  }
+
+  .project-card {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    aspect-ratio: 16/9;
+    cursor: pointer;
+    margin-bottom: var(--spacing-gutter);
+  }
+
+  .project-card-offset {
+    margin-top: 0;
+  }
+
+  @media (min-width: 769px) {
+    .project-card-offset {
+      margin-top: 96px;
+    }
+  }
+
+  .project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: transform 1s ease;
+  }
+
+  .project-card:hover img {
+    transform: scale(1.05);
+    filter: grayscale(0);
+  }
+
+  .project-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(21, 19, 16, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 48px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .project-card:hover .project-overlay {
+    opacity: 1;
+  }
+
+  .project-location {
+    font-family: var(--font-technical-data);
+    font-size: 12px;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+  }
+
+  .project-name {
+    font-family: var(--font-headline-md);
+    font-size: 42px;
+    line-height: 48px;
+    margin-bottom: 16px;
+  }
+
+  .project-desc {
+    font-family: var(--font-body-md);
+    font-size: 16px;
+    max-width: 400px;
+    margin-bottom: 24px;
+  }
+
+  .project-line {
+    width: 48px;
+    height: 1px;
+    background-color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .project-name {
+      font-size: 32px;
+    }
+  }
+</style>

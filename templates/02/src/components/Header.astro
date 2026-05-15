@@ -1,0 +1,218 @@
+---
+---
+
+<!-- Custom Cursor -->
+<div class="cursor-dot hidden-md"></div>
+<div class="cursor-ring hidden-md"></div>
+
+<!-- TopNavBar -->
+<nav class="main-nav" id="main-nav">
+  <div class="nav-container">
+    <a href="/" class="nav-logo">FORMA</a>
+    <div class="nav-links">
+      <a class="nav-link " href="/#inicio">INICIO</a>
+      <a class="nav-link" href="/#nosotros">NOSOTROS</a>
+      <a class="nav-link" href="/#proyectos">PROYECTOS</a>
+      <a class="nav-link" href="/#servicios">SERVICIOS</a>
+      <a class="nav-link" href="/#contacto">CONTACTO</a>
+    </div>
+    <div class="nav-tagline">ARQUITECTURA Y DISEÑO</div>
+  </div>
+</nav>
+
+<style>
+  .main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    padding: 20px;
+    background: transparent;
+    border-bottom: 1px solid rgba(77, 70, 60, 0.3);
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+  }
+
+  @media (min-width: 769px) {
+    .main-nav {
+    padding: 20px;
+    }
+  }
+
+  .main-nav.scrolled {
+    background-color: var(--color-surface);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-logo {
+    font-family: var(--font-headline-sm);
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--color-on-surface);
+  }
+
+  .nav-links {
+    display: none;
+    gap: var(--spacing-gutter);
+  }
+
+  @media (min-width: 769px) {
+    .nav-links {
+      display: flex;
+    }
+  }
+
+  .nav-link {
+    font-family: var(--font-label-caps);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    color: var(--color-on-surface-variant);
+    padding-bottom: 4px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--color-primary);
+  }
+
+  .nav-link.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+  }
+
+  .nav-tagline {
+    display: none;
+    font-family: var(--font-technical-data);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+  }
+
+  @media (min-width: 769px) {
+    .nav-tagline {
+      display: block;
+    }
+  }
+
+  .hidden-md {
+    display: none;
+  }
+
+  @media (min-width: 769px) {
+    .hidden-md {
+      display: block;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .main-nav {
+      padding: var(--spacing-unit) var(--spacing-margin-mobile);
+    }
+  }
+</style>
+
+<script>
+  // Custom cursor movement
+  const dot = document.querySelector('.cursor-dot');
+  const ring = document.querySelector('.cursor-ring');
+
+  document.addEventListener('mousemove', (e) => {
+    if (dot && ring) {
+      (dot as HTMLElement).style.left = (e.clientX as number) + 'px';
+      (dot as HTMLElement).style.top = (e.clientY as number) + 'px';
+
+      setTimeout(() => {
+        (ring as HTMLElement).style.left = (e.clientX as number) + 'px';
+        (ring as HTMLElement).style.top = (e.clientY as number) + 'px';
+      }, 50);
+    }
+  });
+
+  // Expand ring on interactive elements
+  const interactables = document.querySelectorAll('a, button, input, label');
+  interactables.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      if (ring) {
+        (ring as HTMLElement).style.width = '60px';
+        (ring as HTMLElement).style.height = '60px';
+        (ring as HTMLElement).style.borderColor = '#e1c39b';
+        (ring as HTMLElement).style.backgroundColor = 'rgba(225, 195, 155, 0.1)';
+      }
+    });
+    el.addEventListener('mouseleave', () => {
+      if (ring) {
+        (ring as HTMLElement).style.width = '40px';
+        (ring as HTMLElement).style.height = '40px';
+        (ring as HTMLElement).style.borderColor = '#e1c39b';
+        (ring as HTMLElement).style.backgroundColor = 'transparent';
+      }
+    });
+  });
+
+  // Sticky Navbar background change on scroll
+  const nav = document.querySelector('#main-nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+      nav?.classList.add('scrolled');
+    } else {
+      nav?.classList.remove('scrolled');
+    }
+  });
+
+  // Smooth scroll implementation
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      e.preventDefault();
+      const href = anchor.getAttribute('href');
+      const target = document.querySelector(href || '');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Active link on scroll - only on home page
+  const isHomePage = window.location.pathname === '/' || window.location.pathname === '/index' || window.location.pathname === '';
+
+  if (isHomePage) {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            // Handle both #id and /#id formats
+            const href = link.getAttribute('href') || '';
+            if (href === `#${id}` || href === `/#${id}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  }
+</script>

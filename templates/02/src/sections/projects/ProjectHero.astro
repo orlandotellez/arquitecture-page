@@ -1,0 +1,77 @@
+---
+import SectionContainer from '../../components/SectionContainer.astro'
+
+interface Props {
+  title: string
+  location: string
+  year: string
+  image: string
+}
+
+const { title, location, year, image } = Astro.props
+---
+
+<section class="project-hero">
+  <SectionContainer>
+    <div class="hero-content">
+      <span class="hero-number">01</span>
+      <h1 class="hero-title">{title}</h1>
+      <div class="hero-meta">
+        <span class="meta-item">{location}</span>
+        <span class="meta-divider">/</span>
+        <span class="meta-item">{year}</span>
+      </div>
+    </div>
+  </SectionContainer>
+</section>
+
+<style>
+  .project-hero {
+    padding-top: 160px;
+    padding-bottom: 80px;
+    min-height: 50vh;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-number {
+    font-family: var(--font-technical-data);
+    font-size: 14px;
+    color: var(--color-primary);
+    margin-bottom: 16px;
+  }
+
+  .hero-title {
+    font-family: var(--font-headline-md);
+    font-size: 48px;
+    line-height: 1.1;
+    color: var(--color-on-surface);
+    margin-bottom: 24px;
+    max-width: 600px;
+  }
+
+  @media (min-width: 769px) {
+    .hero-title {
+      font-size: 64px;
+    }
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .meta-item {
+    font-family: var(--font-technical-data);
+    font-size: 12px;
+    color: var(--color-on-surface-variant);
+  }
+
+  .meta-divider {
+    color: var(--color-outline-variant);
+  }
+</style>

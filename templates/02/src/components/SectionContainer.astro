@@ -1,0 +1,27 @@
+---
+interface Props {
+  class?: string
+}
+
+const { class: className } = Astro.props
+---
+
+<div class:list={["section-container", className]}>
+  <slot />
+</div>
+
+<style>
+  .section-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding-left: var(--spacing-margin-mobile);
+    padding-right: var(--spacing-margin-mobile);
+  }
+
+  @media (min-width: 769px) {
+    .section-container {
+      padding-left: var(--spacing-margin-desktop);
+      padding-right: var(--spacing-margin-desktop);
+    }
+  }
+</style>

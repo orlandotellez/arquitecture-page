@@ -1,0 +1,120 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import ProjectHero from '../../sections/projects/ProjectHero.astro'
+import ProjectInfo from '../../sections/projects/ProjectInfo.astro'
+import ProjectNarrative from '../../sections/projects/ProjectNarrative.astro'
+import ProjectGallery from '../../sections/projects/ProjectGallery.astro'
+import ProjectPlans from '../../sections/projects/ProjectPlans.astro'
+import ProjectRelated from '../../sections/projects/ProjectRelated.astro'
+
+// Static paths for build
+export function getStaticPaths() {
+  return [
+    {
+      params: { slug: 'casa-montana' },
+      props: {
+        project: {
+          title: '01 Casa Montaña',
+          location: 'Valle de Bravo, México',
+          year: '2024',
+          image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCiuRMVhL3_B3sdBcQ3ykrWfduzxB_XaEZf_WHHiwzbovBT0zMXfRqtTaNp_GwNyNxeCm0ZHrWuowQEGAFVS2FFAJM8hJH3zRQd8CKVjKfw8Sp-W85LkZN0XdqVpV2GIoefR3VPAZa_RxUNT79D7snHlzIaW-SE1vLzE9wZowML9AgyWOHzmFqbe6WzwEM1NF_tHw9RluubVlBQA31qy05iTxO8-jafum4s55utuJgEVtR7lYqCWCfKQuQLtIzBo-qplt1vx_BqH6Pe',
+          category: 'Residencial',
+          surface: '850 m²',
+          client: 'Privado',
+          status: 'Construido',
+          narrativeTitle: 'Un diálogo silencioso entre la topografía y el habitáculo contemporáneo.',
+          narrativeContent: [
+            'Ubicada en una de las pendientes más pronunciadas de la zona, Casa Montaña surge como una serie de volúmenes horizontales que se escalonan para minimizar el impacto visual en el paisaje. El reto principal fue integrar la estructura robusta de concreto aparente con la ligereza del entorno boscoso.',
+            'La paleta material se limita a tres elementos primordiales: concreto pigmentado, madera de roble recuperada y acero negro. Esta tríada busca una permanencia visual que envejezca con dignidad, permitiendo que la pátina del tiempo se convierta en parte del diseño.'
+          ],
+          quote: 'La arquitectura no debe imponerse al sitio, sino revelarlo. En Casa Montaña, el vacío es tan importante como la masa.',
+          materials: [
+            'Concreto Aparente Pigmentado',
+            'Madera de Roble Aceitada',
+            'Recinto Volcánico Negro',
+            'Cristal de Baja Emisividad'
+          ],
+          team: [
+            'Dir. Creativo: Arq. Elena Vargas',
+            'Asociado: Carlos Méndez',
+            'Ingeniería: Structur-Lab',
+            'Iluminación: Lux Studio'
+          ],
+          gallery: [
+            {
+              src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBg75cyvqTcB_Br8gKIkxb3AgXGIfiINuFTXHCponHeLpBkPYto6Qyi9nuvccZhcWj_qVIasGxvwGk8dFWZkV0nYpE0dseUSKXQaOZT_f3xzI_CpA1u33uH1S7MYXN4JSqITcRwqzoKU4g2aVC4Dia610yS1tNFmtkcFvuGb3XNkVAI-nhb0sImfknSJW0WQc-k5p43icxezb9vXPxXBBpY7MhcLSfgzLx_5b5CwiLlhtCsPTxgOJ6ua-c82EptSkHjSo9MfDjjA9jP',
+              alt: 'Detailed interior shot of the Casa Montaña living area featuring a large stone fireplace and a minimalist wooden dining table.',
+              label: 'INT-01 / ESTANCIA PRINCIPAL'
+            },
+            {
+              src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAnXwa5nt1_t400CdbhgcrQSKhoafC8TT8VwEZraw609ZJ08gAgTc4NtbdJd3645Lt9E1KQ8ecr4ZE-q3AAdU9vr5EMqvgtB0I1oWNyo4xJMr1bh4d4J__xHZ6yv0APrxFFDCoFZfV0XmwK_MPPqkIMPf8GwrC-4CsOK1cvKmo9HmKkSXc3aeFtJ_OtF1rejJMc81vRiAVMlVBFkewJMv6YeiEZPYgTTpfr4Z55IUyy5B-xXzZaniwtFK8u-K9c1coH1w3U965uNaJM',
+              alt: 'A close-up architectural detail of the Casa Montaña exterior showing the intersection of a dark steel beam and a textured concrete wall.',
+              label: 'EXT-01 / DETALLE ESTRUCTURAL'
+            },
+            {
+              src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAgiFazjlZH3r8JRSC7pzllStP28hOot0KS1D_JNcIZ8WtCH2YIo8sqFKhO6FgrJm1L_13qH7WmvbxprE33NaMTt0-8SqpiWjlvRpJ79c1YPfsEDVV8Z2_cIdRTyHZ-_TwvUzcDSCUqEpSovDHoDy3E6VYkbpPI35Cj8yPYbbDk4Ita4zUCJDy-dK6weMnPvD9fS8A5BA30a0s-R-ozkrj41dooU98yfsKNwnEwfVIhfYu56bNx9pUj8iJ379Hw1LHXoJx6VFDExGT-',
+              alt: 'Exterior night shot of the Casa Montaña terrace featuring a minimalist infinity pool reflecting the starry sky.',
+              label: 'EXT-02 / TERRAZA NOCTURNA'
+            },
+            {
+              src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuClHMWNAZQsywRAf9HmFw0ZmvDaB2AR0IaTlmnQNt7gjDNblZ6tbzKpngOSzdQ1h2C0gjimsxfSJcTBBVXbnG9GLCv0V_KxFjvrIAUefLI0uxWFRuGhPRrPjrvoh6SUNREwj7fAKkdErwzvizK44FQ7Z4CE2jRb970kdVG3T0i4_NloNCQDignfbVnTYuJZpFGxcTNot5lFNwX8H6O8QAgmhgWmgHzyKj7FQZBdZA8JbeJn2CuCeZ6McgmD7z1ck_o0tSWPSTj2D23u',
+              alt: 'Wide panoramic shot of Casa Montaña at sunrise, showing the entire architectural complex nestled into the misty Valle de Bravo hills.',
+              label: 'EXT-04 / PANORÁMICA ALBA'
+            }
+          ],
+          plans: [
+            { title: 'Planta Baja / Nivel 0.00', subtitle: 'Distribución Social' },
+            { title: 'Corte Longitudinal A-A\'', subtitle: 'Relación Topográfica' },
+            { title: 'Fachada Poniente', subtitle: 'Estudio de Sombras' }
+          ]
+        }
+      }
+    }
+  ]
+}
+
+const { project } = Astro.props
+---
+
+<Layout title={`${project.title} | FORMA`}>
+  
+  <ProjectHero
+    title={project.title}
+    location={project.location}
+    year={project.year}
+    image={project.image}
+  />
+
+  <ProjectInfo
+    category={project.category}
+    location={project.location.split(',')[0]}
+    year={project.year}
+    surface={project.surface}
+    client={project.client}
+    status={project.status}
+  />
+
+  <ProjectNarrative
+    title={project.narrativeTitle}
+    content={project.narrativeContent}
+    quote={project.quote}
+    materials={project.materials}
+    team={project.team}
+  />
+
+  <ProjectGallery images={project.gallery} />
+
+  <ProjectPlans plans={project.plans} />
+
+  <ProjectRelated />
+</Layout>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>

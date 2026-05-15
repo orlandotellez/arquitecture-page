@@ -1,0 +1,139 @@
+---
+import SectionContainer from '../../components/SectionContainer.astro'
+---
+
+<section class="related-projects">
+  <SectionContainer>
+    <div class="related-header">
+      <h3 class="related-title">Proyectos Relacionados</h3>
+      <a class="related-link" href="/proyectos">VER TODOS</a>
+    </div>
+    <div class="related-grid">
+      <a href="#" class="related-card">
+        <div class="related-image">
+          <img 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBobcCvAyICh1tT2Tpge6rqN8-zqdnhy0uh-1QyKsQQJDlTqZMH6-_pvrLd0omyV6-4I4Ec6TtZJZQtn_QcgefHpV4dLGQ_noeiKbR4Ej3ta0bhBhyYZJGmWCXapwcSCmIzGKPQwqlk143t3ida6PkCSNfFCIeAIWKdFsJkRvkYZAJ9Wn4gIqSadnMlAnZh2aw1eUpVKKTiPb7Ynl4ZclfzpwM6YDloh-fkTlbjB6nuVX1aJveaCNg2sEbZk4tHaUk9yeFLmAoh6M2y" 
+            alt="" 
+          />
+        </div>
+        <span class="related-meta">RESIDENCIAL / 2023</span>
+        <h4 class="related-name">Casa Terreno</h4>
+      </a>
+      <a href="#" class="related-card">
+        <div class="related-image">
+          <img 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzMkJ1o24omtErl-kldr3ymvqnk6xt0mp4sQm-VrLYtRVp3dCloBURVGK7Vat85AkgOz1I28ohM4lUuO1WYfzvJ2ImVMgw8F7cZULEeQ-djIh72Le_cD76kPjF1WYDpTdhc5O4iprorYfspOBGCdljgmY-tZj4pb7vMOwslI8Ig9qX-cSOc75styB0vci-e2FF4rNLaCt4YpG2DXXtkBhnr6E_KNp-gkp8u8P62eA4fR6AoBULtBgO2ylOM8_Y7f9xRvt5TrSaFJCQ" 
+            alt="" 
+          />
+        </div>
+        <span class="related-meta">HOSPITALIDAD / 2022</span>
+        <h4 class="related-name">Hotel Vereda</h4>
+      </a>
+      <a href="#" class="related-card">
+        <div class="related-image">
+          <img 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9CycHmxB-XvdiW5BuTxwau1P7JM7rFCKOD4EJa0YcuS8Te6WMXhrxOUN_M00gBT_j3tVzPhBx6n1-5zN6CycEk7Z9ATWQErWQzHYCY8aU9RDwRQRpJg6KLvFejze_qo4uwU1fuTIfwjmtQin01hHGDJPgiG7lU_FVpDLn9uVcLoapf9Bpgfx65BfcIxbQDH3R6w6cM7WVU8ZRLG-E-KbaJAgnEIlttpnygRE97ysbT5snIEyQRfZ251u_bp1Ka53HRWJRRRGrsXc4" 
+            alt="" 
+          />
+        </div>
+        <span class="related-meta">CORPORATIVO / 2024</span>
+        <h4 class="related-name">Edificio Nube</h4>
+      </a>
+    </div>
+  </SectionContainer>
+</section>
+
+<style>
+  .related-projects {
+    padding-top: 160px;
+    padding-bottom: 160px;
+  }
+
+  .related-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 64px;
+  }
+
+  .related-title {
+    font-family: var(--font-headline-sm);
+    font-size: 24px;
+  }
+
+  .related-link {
+    font-family: var(--font-label-caps);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--color-primary);
+    position: relative;
+  }
+
+  .related-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease-in-out;
+  }
+
+  .related-link:hover::after {
+    width: 100%;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-gutter);
+  }
+
+  @media (min-width: 769px) {
+    .related-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .related-card {
+    cursor: pointer;
+  }
+
+  .related-image {
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    margin-bottom: 24px;
+    border: 1px solid rgba(77, 70, 60, 0.3);
+  }
+
+  .related-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .related-card:hover .related-image img {
+    transform: scale(1.1);
+  }
+
+  .related-meta {
+    font-family: var(--font-technical-data);
+    font-size: 12px;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .related-name {
+    font-family: var(--font-headline-sm);
+    font-size: 24px;
+    color: var(--color-on-surface);
+    transition: color 0.3s ease;
+  }
+
+  .related-card:hover .related-name {
+    color: var(--color-primary);
+  }
+</style>

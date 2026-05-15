@@ -1,0 +1,174 @@
+---
+import SectionContainer from '../../components/SectionContainer.astro'
+---
+
+<section class="projects" id="proyectos">
+  <SectionContainer>
+    <div class="projects-header">
+      <div class="projects-header-left">
+        <span class="projects-label">TRABAJO SELECCIONADO</span>
+        <h2 class="projects-title">Obras que definen una era.</h2>
+      </div>
+      <a class="projects-link" href="/proyectos">VER ARCHIVO COMPLETO</a>
+    </div>
+  </SectionContainer>
+  <SectionContainer>
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <a href="/proyectos/casa-montana" class="project-card">
+        <div class="project-image-wrapper">
+          <img 
+            alt="Torre Reforma" 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7pwidwm-lnCPRKrI3qMieu-4ykEveG5rWbWdb4J-5c4SEujouYu6dgw4Y1d4M9Q0-noFMDYcX6G3UnFOMq7iDLs31M5fmvA70Q-vyyPPDqq1UwB22_fyYdWf3FEO2G2em0VB-QY4BQobyDqbyf9VIr4IrIDVMpgxCk-p1u9AUVKsXeWmOVF06P9PqduMnbKvNPMHukLuP9L12Tflt2rRpLyKjM6Quas5FKKCfTjWlr3GoRIgi0v8SqtJEq_DzLBUDLZCARTxKECMW" 
+          />
+        </div>
+        <div class="project-info">
+          <span class="project-location">CIUDAD DE MÉXICO</span>
+          <h3 class="project-name">Torre Reforma</h3>
+        </div>
+      </a>
+      <!-- Project 2 -->
+      <a href="/proyectos/casa-montana" class="project-card">
+        <div class="project-image-wrapper">
+          <img 
+            alt="Casa Montaña" 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT7WYq7HGdXFvi7in-YXnw94pR7plPambfFvr8PmxWOXyORTiF6nJk3x4-TaY9mmcXci3nPOUqEp1UKl9MUC8duh8ldJdD5UEB1x-fxBC8KFCqXEMBcIMMM98x5qfTjLt3lGnyVjwkyUeuDMuv7by3HbOgGuR_bvIzGfAXws_4342mC6vYoxSu7sd8L4-nelC0lPtXTZ5v29iaEFOe74u1NvcJ8-hyQsuBmlErw5k47aPCR0rDdI5_MUhkxBzS47AU1SQB8c7wvhk6" 
+          />
+        </div>
+        <div class="project-info">
+          <span class="project-location">VALLE DE BRAVO</span>
+          <h3 class="project-name">Casa Montaña</h3>
+        </div>
+      </a>
+      <!-- Project 3 -->
+      <a href="#" class="project-card">
+        <div class="project-image-wrapper">
+          <img 
+            alt="Museo de Arte" 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7zA0iI0p3mX-YXbVF134Pi8zr-6ngoPiC0OBboZhtneK1dHC4IXpRAjWwW9Stzbko1YAw03DqvzrvCGQkY747BA2UA4D0r4se6E3J_iVlhyE1_aUcv9ZAWYU9HtO-BzPPviqP-wjwaWrXihh4hpIO_FhrbNbk2HOqrpykTWqTioE_5rmsSvsNMRoI6gKTASeC5tdeyqvmYHTljc9bKSp8rq88lWA4e-jIUGFhLzRMbED2YJY-iXZjkNac6atAmC2HqBlcKYG0q1qD" 
+          />
+        </div>
+        <div class="project-info">
+          <span class="project-location">MADRID</span>
+          <h3 class="project-name">Museo de Arte</h3>
+        </div>
+      </a>
+    </div>
+  </SectionContainer>
+</section>
+
+<style>
+  .projects {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    background-color: var(--color-surface-container-lowest);
+  }
+
+  .projects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 48px;
+  }
+
+  .projects-label {
+    font-family: var(--font-technical-data);
+    font-size: 12px;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .projects-title {
+    font-family: var(--font-headline-md);
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .projects-link {
+    font-family: var(--font-label-caps);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--color-on-surface);
+    position: relative;
+    padding-bottom: 4px;
+  }
+
+  .projects-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease-in-out;
+  }
+
+  .projects-link:hover::after {
+    width: 100%;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-gutter);
+  }
+
+  @media (min-width: 769px) {
+    .projects-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+  }
+
+  .project-card {
+    position: relative;
+    display: block;
+    cursor: pointer;
+  }
+
+  .project-image-wrapper {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .project-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: transform 0.6s ease;
+  }
+
+  .project-card:hover .project-image-wrapper img {
+    transform: scale(1.05);
+    filter: grayscale(0);
+  }
+
+  .project-info {
+    padding: 0 4px;
+  }
+
+  .project-location {
+    font-family: var(--font-technical-data);
+    font-size: 10px;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .project-name {
+    font-family: var(--font-headline-sm);
+    font-size: 20px;
+    line-height: 28px;
+    color: var(--color-on-surface);
+    transition: color 0.3s ease;
+  }
+
+  .project-card:hover .project-name {
+    color: var(--color-primary);
+  }
+</style>
