@@ -1,238 +1,210 @@
 ---
-import { House, Target, Layout, Building, Box } from '@lucide/astro';
-
 interface Props {
-  title: string;
+  id: string;
+  name: string;
   description: string;
-  icon: string;
-  color: string;
-  badge: string | null;
+  stack: string[];
+  githubUrl: string;
+  liveUrl: string;
   index: number;
-  href: string;
 }
 
-const { title, description, icon, color, badge, index, href } = Astro.props;
-
-// Mapear nombres de iconos a componentes
-const icons: Record<string, any> = {
-  house: House,
-  target: Target,
-  layout: Layout,
-  building: Building,
-  box: Box
-};
-
-const IconComponent = icons[icon] || Box;
+const { id, name, description, stack, githubUrl, liveUrl, index } = Astro.props;
 ---
 
-<a href={href} target="_blank" rel="noopener noreferrer" class="card" style={`animation-delay: ${index * 100}ms`}>
-  <div class={`card-bg ${color}`}></div>
-  <div class="card-glow"></div>
-
-  <div class="card-content">
-    <div class="card-header">
-      <div class={`card-icon ${color}`}>
-        <IconComponent size={24} />
+<article
+  class="template-card card reveal"
+  style={`--delay: ${index * 0.05}s`}
+>
+  <div class="card-preview">
+    <div class="preview-placeholder">
+      <div class="preview-ui">
+        <div class="ui-header"></div>
+        <div class="ui-body">
+          <div class="ui-hero"></div>
+          <div class="ui-rows">
+            <div class="ui-row"></div>
+            <div class="ui-row"></div>
+            <div class="ui-row"></div>
+          </div>
+        </div>
       </div>
-      <div class="card-meta">
-        <span class="card-number">#{String(index + 1).padStart(2, '0')}</span>
-        {badge && <span class="card-badge">{badge}</span>}
-      </div>
-    </div>
-
-    <h3 class="card-title">{title}</h3>
-    <p class="card-description">{description}</p>
-
-    <div class="card-footer">
-      <span class="card-link">
-        Ver plantilla
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </span>
-      <span class="card-hint">Click para explorar</span>
     </div>
   </div>
 
-  <div class="card-decor"></div>
-</a>
+  <div class="card-body">
+    <span class="card-id mono">{id}</span>
+    <h3 class="card-title">{name}</h3>
+    <p class="card-description">{description}</p>
+
+    <div class="card-tags">
+      {stack.slice(0, 4).map(tech => (
+        <span class="tag">{tech}</span>
+      ))}
+    </div>
+
+    <div class="card-footer">
+      <a
+        href={githubUrl}
+        target="_blank"
+        rel="noopener"
+        class="card-github"
+        aria-label="Ver en GitHub"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      </a>
+      <a href={liveUrl} target="_blank" rel="noopener" class="card-link">
+        VER PLANTILLA →
+      </a>
+    </div>
+  </div>
+</article>
 
 <style>
-  .card {
-    position: relative;
-    display: block;
-    border-radius: var(--radius-xl);
-    background: var(--color-card);
+  .template-card {
+    background-color: var(--color-bg-secondary);
     border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    transition: var(--transition);
-    animation: fadeInUp 0.5s ease forwards;
-    opacity: 0;
+    transition: transform 0.3s ease, border-color 0.3s ease;
   }
 
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .template-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(201, 149, 108, 0.3);
   }
 
-  .card:hover {
-    border-color: rgba(251, 191, 36, 0.3);
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  .template-card.hidden {
+    display: none;
   }
 
-  .card-bg {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.5s ease;
+  .card-preview {
+    height: 240px;
+    overflow: hidden;
+    background-color: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
   }
 
-  .card:hover .card-bg {
-    opacity: 0.1;
+  .preview-placeholder {
+    width: 100%;
+    height: 100%;
+    padding: 16px;
   }
 
-  .card-bg.from-coffee-400-to-coffee-600 {
-    background: linear-gradient(135deg, #d4a574, #b8855a);
+  .preview-ui {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-bg-secondary);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
   }
 
-  .card-bg.from-coffee-500-to-amber-600 {
-    background: linear-gradient(135deg, #b8855a, #d97706);
+  .template-card:hover .preview-ui {
+    transform: scale(1.02);
   }
 
-  .card-glow {
-    position: absolute;
-    inset: -1px;
-    background: linear-gradient(90deg, transparent, rgba(184, 133, 90, 0.05), transparent);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    border-radius: var(--radius-xl);
-    filter: blur(20px);
+  .ui-header {
+    height: 32px;
+    background-color: var(--color-bg-nav);
+    border-bottom: 1px solid var(--color-border);
   }
 
-  .card:hover .card-glow {
-    opacity: 1;
-  }
-
-  .card-content {
-    position: relative;
-    padding: 32px;
-  }
-
-  .card-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: 24px;
-  }
-
-  .card-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: var(--radius-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-
-  .card-icon.from-coffee-400-to-coffee-600 {
-    background: linear-gradient(135deg, #d4a574, #c9956c);
-  }
-
-  .card-icon.from-coffee-500-to-amber-600 {
-    background: linear-gradient(135deg, #b8855a, #d97706);
-  }
-
-  .card-meta {
+  .ui-body {
+    padding: 16px;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    gap: 12px;
+    height: calc(100% - 32px);
+  }
+
+  .ui-hero {
+    height: 60%;
+    background: linear-gradient(180deg, var(--color-bg-elevated) 0%, transparent 100%);
+    border-radius: 4px;
+    position: relative;
+  }
+
+  .ui-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(90deg, var(--color-coffee-500) 0%, transparent 50%);
+    opacity: 0.4;
+  }
+
+  .ui-rows {
+    display: flex;
+    flex-direction: column;
     gap: 8px;
   }
 
-  .card-number {
-    font-size: 12px;
-    font-family: monospace;
-    color: var(--color-text-dim);
+  .ui-row {
+    height: 12px;
+    background-color: var(--color-bg-elevated);
+    border-radius: 4px;
   }
 
-  .card-badge {
-    padding: 2px 8px;
-    font-size: 12px;
-    font-weight: 500;
-    border-radius: 20px;
-    background: rgba(184, 133, 90, 0.2);
-    color: var(--color-coffee-300);
+  .card-body {
+    padding: 24px;
+  }
+
+  .card-id {
+    font-size: 11px;
+    color: var(--color-coffee-400);
+    display: block;
+    margin-bottom: 8px;
   }
 
   .card-title {
-    font-size: 20px;
+    font-family: var(--font-heading);
+    font-size: 22px;
     font-weight: 700;
     color: var(--color-text);
     margin-bottom: 8px;
-    transition: color 0.3s ease;
-  }
-
-  .card:hover .card-title {
-    color: var(--color-coffee-300);
   }
 
   .card-description {
-    font-size: 14px;
-    color: var(--color-text-muted);
+    font-size: 15px;
+    color: var(--color-text-secondary);
     line-height: 1.6;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
   }
 
   .card-footer {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  .card-github {
+    color: var(--color-text-muted);
+    transition: color 0.2s ease;
+  }
+
+  .card-github:hover {
+    color: var(--color-text);
   }
 
   .card-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    transition: color 0.2s ease;
+  }
+
+  .card-link:hover {
     color: var(--color-coffee-400);
-    transition: var(--transition);
-  }
-
-  .card-link svg {
-    transition: transform 0.3s ease;
-  }
-
-  .card:hover .card-link {
-    color: var(--color-coffee-300);
-  }
-
-  .card:hover .card-link svg {
-    transform: translateX(4px);
-  }
-
-  .card-hint {
-    font-size: 12px;
-    color: var(--color-text-dim);
-  }
-
-  .card-decor {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 128px;
-    height: 128px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent);
-    border-radius: 0 0 0 100%;
-    pointer-events: none;
   }
 </style>

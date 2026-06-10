@@ -1,132 +1,164 @@
 ---
+import { templates, categories } from '../data/templates.js';
 import TemplateCard from '../components/TemplateCard.astro';
-
-interface Template {
-  title: string;
-  description: string;
-  icon: string;
-  color: string;
-  badge: string | null;
-  url: string;
-}
-
-interface Props {
-  templates: Template[];
-}
-
-const { templates } = Astro.props;
 ---
 
-<section class="templates-section">
-  <div class="templates-inner">
-    {templates.length > 0 ? (
-      <div class="templates-grid">
-        {templates.map((template, index) => (
-          <TemplateCard
-            title={template.title}
-            description={template.description}
-            icon={template.icon}
-            color={template.color}
-            badge={template.badge}
-            index={index}
-            href={template.url}
-          />
+<section id="plantillas" class="templates section">
+  <div class="container">
+    <div class="templates-header reveal">
+      <div class="header-left">
+        <span class="header-label mono">PLANTILLAS</span>
+        <h2 class="header-title">Templates desarrollados.</h2>
+      </div>
+
+      <div class="header-filters">
+        {categories.map(cat => (
+          <button
+            class="filter-btn mono"
+            data-category={cat.id}
+          >
+            {cat.label}
+          </button>
         ))}
       </div>
-    ) : (
-      <div class="empty-state">
-        <div class="empty-icon">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
-          </svg>
-        </div>
-        <h2 class="empty-title">No hay plantillas disponibles</h2>
-        <p class="empty-description">
-          Agrega carpetas en el directorio <code class="empty-code">templates/</code> para comenzar
-        </p>
-        <button class="empty-button">Crear Primera Plantilla</button>
-      </div>
-    )}
+    </div>
+
+    <div class="templates-grid">
+      {templates.map((template, index) => (
+        <TemplateCard
+          id={template.id}
+          name={template.name}
+          description={template.description}
+          stack={template.stack}
+          githubUrl={template.githubUrl}
+          liveUrl={template.liveUrl}
+          index={index}
+        />
+      ))}
+    </div>
   </div>
 </section>
 
 <style>
-  .templates-section {
-    padding: 0 24px 80px;
+  .templates {
+    background-color: var(--color-bg);
   }
 
-  .templates-inner {
-    max-width: 1280px;
-    margin: 0 auto;
+  .templates-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 64px;
+    gap: 32px;
+  }
+
+  .header-label {
+    font-size: 10px;
+    color: var(--color-coffee-400);
+    letter-spacing: 0.15em;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .header-title {
+    font-size: 52px;
+    color: var(--color-text);
+  }
+
+  .header-filters {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 8px 16px;
+    background: none;
+    border: none;
+    font-size: 11px;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .filter-btn:hover {
+    color: var(--color-text-secondary);
+  }
+
+  .filter-btn.active {
+    color: var(--color-text);
+  }
+
+  .filter-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 8px;
+    right: 8px;
+    height: 2px;
+    background-color: var(--color-coffee-400);
   }
 
   .templates-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gutter);
   }
 
-  @media (min-width: 768px) {
+  @media (max-width: 1024px) {
     .templates-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  @media (min-width: 1024px) {
+  @media (max-width: 768px) {
+    .templates-header {
+      flex-direction: column;
+    }
+
+    .header-title {
+      font-size: 36px;
+    }
+
+    .header-filters {
+      width: 100%;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      padding-bottom: 8px;
+    }
+
+    .filter-btn {
+      white-space: nowrap;
+    }
+
     .templates-grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
     }
   }
-
-  .empty-state {
-    text-align: center;
-    padding: 80px 0;
-  }
-
-  .empty-icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 24px;
-    background: var(--color-card);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 24px;
-    color: var(--color-text-dim);
-  }
-
-  .empty-title {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--color-text);
-    margin-bottom: 12px;
-  }
-
-  .empty-description {
-    font-size: 16px;
-    color: var(--color-text-muted);
-    margin-bottom: 24px;
-  }
-
-  .empty-code {
-    padding: 4px 8px;
-    background: var(--color-card);
-    border-radius: 6px;
-    color: var(--color-coffee-300);
-    font-family: monospace;
-  }
-
-  .empty-button {
-    padding: 12px 24px;
-    background: var(--color-coffee-500);
-    color: white;
-    font-size: 16px;
-    font-weight: 500;
-    border-radius: 8px;
-    transition: var(--transition);
-  }
-
-  .empty-button:hover {
-    background: var(--color-coffee-400);
-  }
 </style>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.template-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const category = btn.dataset.category;
+
+      cards.forEach(card => {
+        if (category === 'todos') {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // Set first button as active
+  filterBtns[0]?.classList.add('active');
+</script>
