@@ -1,45 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import Navigation from '../components/Navigation.astro';
 import Hero from '../sections/Hero.astro';
-import Features from '../sections/Features.astro';
+import Stats from '../sections/Stats.astro';
 import TemplatesGrid from '../sections/TemplatesGrid.astro';
-
-const templates = [
-  {
-    title: 'Template 01',
-    description: 'Plantilla número 1',
-    icon: 'house',
-    color: 'from-coffee-400-to-coffee-600',
-    badge: 'Popular',
-    url: 'https://arquitecture-page-an32.vercel.app/'
-  },
-  {
-    title: 'Template 02',
-    description: 'Plantilla número 2',
-    icon: 'house',
-    color: 'from-coffee-400-to-coffee-600',
-    badge: 'Popular',
-    url: 'https://arquitecture-page-hwcd.vercel.app/'
-  },
-  {
-    title: 'Template 03',
-    description: 'Plantilla número 3',
-    icon: 'house',
-    color: 'from-coffee-400-to-coffee-600',
-    badge: 'Popular',
-    url: 'https://arquitecture-page-sz55.vercel.app/'
-  }
-];
+import Stack from '../sections/Stack.astro';
+import OpenSource from '../sections/OpenSource.astro';
+import Contacto from '../sections/Contacto.astro';
+import Footer from '../components/Footer.astro';
 ---
-<Layout>
-  <Header />
+
+<Layout title="Arquitectura Page | Galería de Plantillas">
+  <Navigation />
 
   <main>
-    <Hero templateCount={templates.length} />
-    <TemplatesGrid templates={templates} />
-    <Features />
+    <Hero />
+    <Stats />
+    <TemplatesGrid />
+    <Stack />
+    <OpenSource />
+    <Contacto />
   </main>
 
   <Footer />
