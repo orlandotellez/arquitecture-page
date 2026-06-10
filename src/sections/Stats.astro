@@ -1,0 +1,71 @@
+---
+import { templates } from '../data/templates.js';
+---
+
+<section class="stats section-alt">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal" style="--delay: 0s">
+        <span class="stat-number">{templates.length}+</span>
+        <span class="stat-label mono">PLANTILLAS</span>
+      </div>
+      <div class="stat-item reveal" style="--delay: 0.1s">
+        <span class="stat-number">100%</span>
+        <span class="stat-label mono">OPEN SOURCE</span>
+      </div>
+      <div class="stat-item reveal" style="--delay: 0.2s">
+        <span class="stat-number">Astro</span>
+        <span class="stat-label mono">STACK BASE</span>
+      </div>
+      <div class="stat-item reveal" style="--delay: 0.3s">
+        <span class="stat-number">GitHub</span>
+        <span class="stat-label mono">PUBLIC REPOS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats {
+    padding: 48px 0;
+    background-color: var(--color-bg-nav);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--gutter);
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 24px;
+  }
+
+  .stat-number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--color-text-muted);
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-number {
+      font-size: 48px;
+    }
+  }
+</style>
