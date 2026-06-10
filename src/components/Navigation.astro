@@ -1,0 +1,262 @@
+---
+const navLinks = [
+  { href: '#inicio', label: 'INICIO' },
+  { href: '#plantillas', label: 'PLANTILLAS' },
+  { href: '#stack', label: 'STACK' },
+  { href: '#opensource', label: 'OPEN SOURCE' },
+  { href: '#contacto', label: 'CONTACTO' }
+];
+---
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="/" class="nav-logo">
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+        </svg>
+      </div>
+      <span class="logo-text">AQ</span>
+      <span class="logo-square"></span>
+      <span class="logo-name">ARQUITECTURA PAGE</span>
+    </a>
+
+    <div class="nav-links">
+      {navLinks.map(link => (
+        <a href={link.href} class="nav-link">{link.label}</a>
+      ))}
+    </div>
+
+    <a href="https://github.com/orlandotellez/arquitecture-page" target="_blank" rel="noopener" class="nav-cta">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+      </svg>
+      <span>VER REPOS</span>
+    </a>
+
+    <button class="nav-mobile-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-mobile-overlay">
+  <div class="nav-mobile-menu">
+    {navLinks.map(link => (
+      <a href={link.href} class="nav-mobile-link">{link.label}</a>
+    ))}
+    <a href="https://github.com/orlandotellez/arquitecture-page" target="_blank" rel="noopener" class="nav-mobile-link github">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+  </div>
+</div>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-height);
+    background-color: var(--color-bg-nav);
+    border-bottom: 1px solid var(--color-border);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+  }
+
+  .nav-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--horizontal-padding);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--color-coffee-500), var(--color-amber-500));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-icon svg {
+    color: white;
+    width: 18px;
+    height: 18px;
+  }
+
+  .logo-text {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .logo-square {
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-coffee-400);
+    display: block;
+  }
+
+  .logo-name {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+  }
+
+  .nav-link {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    position: relative;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--color-coffee-400);
+  }
+
+  .nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid var(--color-coffee-400);
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    color: var(--color-text);
+    transition: all 0.2s ease;
+  }
+
+  .nav-cta:hover {
+    background-color: var(--color-coffee-500);
+    border-color: var(--color-coffee-500);
+  }
+
+  .nav-mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .nav-mobile-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-text);
+    transition: all 0.2s ease;
+  }
+
+  .nav-mobile-overlay {
+    display: none;
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-bg);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .nav-mobile-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-mobile-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding: 64px 32px;
+  }
+
+  .nav-mobile-link {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--color-text);
+    text-align: center;
+    transition: color 0.2s ease;
+  }
+
+  .nav-mobile-link:hover {
+    color: var(--color-coffee-400);
+  }
+
+  .nav-mobile-link.github {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links,
+    .nav-cta {
+      display: none;
+    }
+
+    .nav-mobile-toggle {
+      display: flex;
+    }
+
+    .nav-mobile-overlay {
+      display: block;
+    }
+
+    .logo-name {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector('.nav-mobile-toggle');
+  const overlay = document.querySelector('.nav-mobile-overlay');
+  const mobileLinks = document.querySelectorAll('.nav-mobile-link');
+
+  toggle?.addEventListener('click', () => {
+    overlay?.classList.toggle('active');
+    document.body.style.overflow = overlay?.classList.contains('active') ? 'hidden' : '';
+  });
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      overlay?.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
